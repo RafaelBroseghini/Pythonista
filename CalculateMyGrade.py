@@ -4,7 +4,7 @@ Purpose: Create a program that determines overall grade and letter grade based o
 Author: Rafael Broseghini
 Date: 04/23/16
 
-Filename: broseghiniWk08P3.py
+Filename: CalculateMyGrade.py
 '''
 # This creates a main function.
 def main():
