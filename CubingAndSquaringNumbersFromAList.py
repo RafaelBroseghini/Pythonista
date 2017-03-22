@@ -4,7 +4,7 @@ Purpose: Create a program that fills a list with random numbers, sorts it, squar
 Author: Rafael Broseghini
 Date: 04/22/2016
 
-Filename: broseghiniWk08P2.py
+Filename: CubingAndSquaringNumbersFromAList.py
 '''
 # This imports the random module.
 import random
