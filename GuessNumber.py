@@ -4,7 +4,7 @@ Purpose: Create a number guessing game.
 Author: Rafael Broseghini
 Date: 04/09/2016
 
-Filename: broseghiniGuessGame.py
+Filename: GuessNumber.py
 '''
 
 import random # Imports random module.
