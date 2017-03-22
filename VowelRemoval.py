@@ -4,7 +4,7 @@ Purpose: Create a program that removes all vowels in a sentence.
 Author: Rafael Broseghini
 Date: 04/22/2016
 
-Filename: RemoveVowels.py
+Filename: VowelRemoval.py
 '''
 # This creates a main function.
 def main():
