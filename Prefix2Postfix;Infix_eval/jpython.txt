@@ -1,0 +1,228 @@
+(* This a sample input file for the scangen.py program. The 
+   program reads an input file like this one and produces a 
+   scanner which is capable of tokenizing the input for the 
+   programming language defined in this file. For instance, 
+   this file defines the programming language for a variant
+   of Python I have called JPython. It is a combination of 
+   Java and Python. 
+   
+   Here is a sample program from that language.
+   
+        # In JPython you can declare functions and variables. 
+        # Functions are declared/defined with a def keyword.
+        def factorial(n) {
+                if (n == 0)
+                        return 1;
+        
+                # This involves a recursive call. Statements are 
+                # terminated with semicolons.
+                return n * factorial(n-1);
+        }
+        
+        
+        def iterativeFactorial(n) {
+                # The decl is to declare a local variable. 
+                decl result = 1;
+                for i in range(1,n+1) {
+                        result = result * i;
+                }
+        
+                return result;
+        }
+        
+        
+        
+        def main() {
+                print("The factorial of 5 is", factorial(5));
+                print('The iterative factorial of 5 is', iterativeFactorial(5));
+        }
+
+*)
+
+(* Comments for the scangen input file appear 
+   within paren asterisk pairs as shown here. *)
+
+#CLASSES
+
+
+(* The classes defines classes of ASCII character codes. All 
+   supported variants of the class definitions are shown here.
+   The ^ operator means that the class includes all ASCII 
+   codes (i.e. 0 to 255) that are NOT the given character
+   codes. The names of the classes below describe their
+   true nature. 
+*)
+
+anycharbutnewline = ^10..13;
+anycharbutquote = ^39;
+anycharbutdoublequote = ^'"';
+quote = 39;
+doublequote = '"';
+pound = '#';
+letter 	= 'A'..'Z', 'a'..'z';
+digit 	= '0'..'9';
+EOF	= 3;
+
+#KEYWORDS
+
+(* Keywords are optional but define the identifier tokens that should
+   be recognized as keywords and not identifiers. 
+   
+   The number is a token identifier that may be used instead of the actual
+   string to identify the keyword. Constants like the name def_keyword
+   are defined by scangen for each keyword identifier in the generated scanner.
+
+   Tokens print, range, True, False are all bindings that exist during code
+   generation so are not recognized as keywords.
+*)
+
+'def';
+'if';
+'while';
+'len';
+'and';
+'not';
+'or';
+'return';
+'in';
+'None';
+'for';
+'else';
+'decl';
+'True';
+'False';
+
+
+#TOKENS
+
+(* The identifier token must be the first token defined in this list for the keyword
+   definitions given above. 
+   
+   The token identifier numbers also have constants defined for them like the name
+   identifier_token for instance. These names are created by the scangen program in the 
+   generated scanner. 
+   
+   The name "comment" is a special name. If used, it represents comments that are to be 
+   ignored by the scanner. Comment tokens are filtered out by the generated scanner. 
+   
+*)
+
+
+identifier = letter.(letter|digit)*;
+integer = digit.digit*;
+'>=';
+'<=';
+'==';
+'!=';
+'>';
+'<';
+'=';
+'(';
+')';
+'+';
+'-';
+'*';
+'/';
+'[';
+']';
+'{';
+'}';
+',';
+';';
+stringconst = (quote . anycharbutquote* . quote) | (doublequote . anycharbutdoublequote* . doublequote);
+comment = pound . anycharbutnewline*;
+endoffile = EOF;
+
+#DEFINITIONS
+
+from jpythonbackend import *
+
+#PRODUCTIONS
+
+Program ::= Block endoffile                                             (JBlock(Block));
+
+Block ::= FunDecs VarDecs Statements                                    ((FunDecs,VarDecs,Statements));
+
+FunDecs ::= null                                                        ([]);
+          | 'def' identifier '(' ArgList ')' CompoundStmt FunDecs       ([JFundec(identifier, ArgList,CompoundStatement)]+FunDecs);
+
+VarDecs ::= null                                                        ([]);
+          | 'decl' identifier ';' VarDecs                               ([JDecl(identifier)]+VarDecs);
+
+Statements ::= null                                                     ([]);
+             | TerminatedStatement Statements                           ([TerminatedStatement]+Statements);
+
+TerminatedStatement ::= Statement ';'                                   (Statement);
+
+CompoundStmt ::= '{' Block '}'                                          (JBlock(Block));
+
+Statement ::= AssignmentStmt                                            (AssignmentStmt);
+            | ReturnStmt                                                (ReturnStmt);
+            | IfStmt                                                    (IfStmt);
+            | WhileStmt                                                 (WhileStmt);
+            | ForStmt                                                   (ForStmt);
+            | CompoundStmt                                              (CompoundStmt);
+
+AssignmentStmt ::= identifier '=' Expression                            (JAssign(identifier,Expression));
+
+ReturnStmt ::= 'return' OptionalExpression                              (JReturn(OptionalExpression));
+
+OptionalExpression ::= null                                             (None);
+                     | Expression                                       (Expression);
+
+IfStmt ::= 'if' '(' Expression ')' Statement OptionalElse               (If(Expression,Statement,OptionalElse));
+
+OptionalElse ::= null                                                   (Pass);
+               | 'else' Statement                                       (Statement);
+
+WhileStmt ::= 'while' '(' Expression ')' Statement                      (While(Expression,Statement));
+
+ForStmt ::= 'for' identifier 'in' Expression Statement                  (For(identifier,Expression,Statement));
+
+Expression ::= Expression 'or' AndExpression                            (OrExpr(Expression,AndExpression));
+             | AndExpression                                            (AndExpression);
+
+AndExpression ::= AndExpression 'and' NotExpression                     (AndExpr(AndExpression,NotExpression));
+                | NotExpression                                         (NotExpression);
+
+NotExpression ::= 'not' RelExpression                                   (NotExpr(RelExpression));
+                | RelExpression                                         (RelExpression);
+
+RelExpression ::= NumExpression RelOp NumExpression                     (relexpr(RelOp,NumExpression1,NumExpression2));
+                | NumExpression                                         (NumExpression);
+
+RelOp ::= '>='                                                          ('>=');
+        | '<='                                                          ('<=');
+        | '>'                                                           ('>');
+        | '<'                                                           ('<');
+        | '=='                                                          ('==');
+        | '!='                                                          ('!=');
+
+NumExpression ::= NumExpression '+' Term                                (AddExpr(NumExpression,Term));
+                | NumExpression '-' Term                                (SubExpr(NumExpression,Term));
+                | Term                                                  (Term);
+
+Term ::= Term '*' Factor                                                (mulexpr(Term,Factor));
+       | Term '/' Factor                                                (divexpr(Term,Factor));
+       | Factor                                                         (Factor);
+
+Factor ::= identifier                                                   (identexpr(identifier));
+         | integer                                                      (intexpr(integer));
+         | FunCall                                                      (FunCall);
+         | '(' ExpressionList ')'                                       (tuple(ExpressionList));
+         | 'True'                                                       (boolexpr(True));
+         | 'False'                                                      (boolexpr(False));
+         | stringconst                                                  (strexpr(stringconst));
+
+FunCall ::= identifier '(' ArgList ')'                                  (funcall(identifier,ArgList));
+
+ArgList ::= null                                                        ([]);
+          | ExpressionList                                              (ExpressionList);
+
+ExpressionList ::= Expression                                           ([Expression]);
+                 | Expression comma ExpressionList                      ([Expression]+ExpressionList);
+
+IdentList ::= identifier                                                ([identifier]);
+            | identifier ',' IdentList                                  ([identifier]+IdentList);
+
+#END
