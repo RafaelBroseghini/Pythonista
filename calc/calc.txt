@@ -1,0 +1,50 @@
+#CLASSES
+
+digit   = '0'..'9';
+period = '.';
+EOF = 3;
+
+#TOKENS
+
+number = (digit.digit*)|(digit.digit*.period.digit.digit*);
+'(';
+')';
+'+';
+'-';
+'*';
+'/';
+'S';
+'R';
+';';
+endoffile = EOF;
+
+#DEFINITIONS
+
+from calcbackend import *
+
+#PRODUCTIONS
+
+Start ::= Prog endoffile                                             (Prog);
+
+Prog ::= Prog Stmt ';'                                               (None);
+
+Prog ::= null                                                        (None);
+
+Stmt ::= E                                                           (print(E));
+
+E ::= E '+' T                                                        (float(E)+float(T));
+    | E '-' T                                                        (float(E)-float(T));
+    | T                                                              (T);
+
+T ::= T '*' St                                                       (float(T)*float(St));
+    | T '/' St                                                       (float(T)/float(St));
+    | St                                                             (St);
+
+St ::= 'S' F                                                         (memory.store(float(F)));
+    | F                                                              (F);
+
+F ::=  number                                                        (number);
+    | '(' E ')'                                                      (E);
+    | 'R'                                                            (memory.recall());
+
+#END

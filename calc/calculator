@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ $# -ne 0 ];
+then
+  echo "usage: calculator"
+  echo "   This runs a command-line calculator for calculating expressions"
+  echo "   as an example of how a parser and parser actions can be used to"
+  echo "   evaluate expressions as they are typed."
+  exit
+fi
+echo "Enter expressions with +,-,*,/,S (for store), and R (for recall) and terminated by a semicolon (i.e. ;)."
+python3 calculator.py

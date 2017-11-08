@@ -1,0 +1,318 @@
+Here is the PDA machine description for your reference. 
+
+NOTE: The shift/reduce warnings below should be resolved by shifting.
+
+Warning: There is a shift/reduce conflict in state 11 on terminal '*'
+         Conflict will be resolved by shifting.
+Warning: There is a shift/reduce conflict in state 11 on terminal '/'
+         Conflict will be resolved by shifting.
+Warning: There is a shift/reduce conflict in state 18 on terminal '*'
+         Conflict will be resolved by shifting.
+Warning: There is a shift/reduce conflict in state 18 on terminal '/'
+         Conflict will be resolved by shifting.
+Warning: There is a shift/reduce conflict in state 19 on terminal '*'
+         Conflict will be resolved by shifting.
+Warning: There is a shift/reduce conflict in state 19 on terminal '/'
+         Conflict will be resolved by shifting.
+LR0State 0
+    On Prog Go To 1
+    Item: Start ::= (*) Prog endoffile 
+
+    Item: Prog ::= (*) Prog Stmt ';' 
+
+    Item: Prog ::= (*)
+        Lookaheads: 'R', '(', endoffile, number, 'S'
+
+
+LR0State 1
+    On St Go To 2
+    On F Go To 3
+    On '(' Go To 4
+    On number Go To 5
+    On 'S' Go To 6
+    On 'R' Go To 7
+    On endoffile Go To 8
+    On Stmt Go To 9
+    On E Go To 10
+    On T Go To 11
+    Item: Stmt ::= (*) E 
+
+    Item: Start ::= Prog (*) endoffile 
+
+    Item: Prog ::= Prog (*) Stmt ';' 
+
+    Item: E ::= (*) E '+' T 
+
+    Item: E ::= (*) E '-' T 
+
+    Item: E ::= (*) T 
+
+    Item: T ::= (*) T '*' St 
+
+    Item: T ::= (*) T '/' St 
+
+    Item: T ::= (*) St 
+
+    Item: St ::= (*) 'S' F 
+
+    Item: St ::= (*) F 
+
+    Item: F ::= (*) 'R' 
+
+    Item: F ::= (*) '(' E ')' 
+
+    Item: F ::= (*) number 
+
+
+LR0State 2
+    Item: T ::= St (*)
+        Lookaheads: ')', '+', '-', '*', '/', ';'
+
+
+LR0State 3
+    Item: St ::= F (*)
+        Lookaheads: ')', '+', '-', '*', '/', ';'
+
+
+LR0State 4
+    On St Go To 2
+    On F Go To 3
+    On '(' Go To 4
+    On number Go To 5
+    On 'S' Go To 6
+    On 'R' Go To 7
+    On E Go To 22
+    On T Go To 11
+    Item: E ::= (*) E '+' T 
+
+    Item: F ::= '(' (*) E ')' 
+
+    Item: E ::= (*) E '-' T 
+
+    Item: E ::= (*) T 
+
+    Item: T ::= (*) T '*' St 
+
+    Item: T ::= (*) T '/' St 
+
+    Item: T ::= (*) St 
+
+    Item: St ::= (*) 'S' F 
+
+    Item: St ::= (*) F 
+
+    Item: F ::= (*) number 
+
+    Item: F ::= (*) 'R' 
+
+    Item: F ::= (*) '(' E ')' 
+
+
+LR0State 5
+    Item: F ::= number (*)
+        Lookaheads: ')', '+', '-', '*', '/', ';'
+
+
+LR0State 6
+    On number Go To 5
+    On F Go To 21
+    On 'R' Go To 7
+    On '(' Go To 4
+    Item: F ::= (*) number 
+
+    Item: St ::= 'S' (*) F 
+
+    Item: F ::= (*) '(' E ')' 
+
+    Item: F ::= (*) 'R' 
+
+
+LR0State 7
+    Item: F ::= 'R' (*)
+        Lookaheads: ')', '+', '-', '*', '/', ';'
+
+
+LR0State 8 is accepting
+    Item: Start ::= Prog endoffile (*)
+
+
+LR0State 9
+    On ';' Go To 20
+    Item: Prog ::= Prog Stmt (*) ';' 
+
+
+LR0State 10
+    On '+' Go To 16
+    On '-' Go To 17
+    Item: Stmt ::= E (*)
+        Lookaheads: ';'
+
+    Item: E ::= E (*) '+' T 
+
+    Item: E ::= E (*) '-' T 
+
+
+LR0State 11
+    On '*' Go To 12
+    On '/' Go To 13
+    Item: E ::= T (*)
+        Lookaheads: ')', '+', '-', '*', '/', ';'
+
+    Item: T ::= T (*) '*' St 
+
+    Item: T ::= T (*) '/' St 
+
+
+LR0State 12
+    On St Go To 15
+    On F Go To 3
+    On number Go To 5
+    On '(' Go To 4
+    On 'R' Go To 7
+    On 'S' Go To 6
+    Item: St ::= (*) 'S' F 
+
+    Item: St ::= (*) F 
+
+    Item: T ::= T '*' (*) St 
+
+    Item: F ::= (*) number 
+
+    Item: F ::= (*) '(' E ')' 
+
+    Item: F ::= (*) 'R' 
+
+
+LR0State 13
+    On St Go To 14
+    On F Go To 3
+    On number Go To 5
+    On '(' Go To 4
+    On 'R' Go To 7
+    On 'S' Go To 6
+    Item: St ::= (*) 'S' F 
+
+    Item: St ::= (*) F 
+
+    Item: T ::= T '/' (*) St 
+
+    Item: F ::= (*) number 
+
+    Item: F ::= (*) '(' E ')' 
+
+    Item: F ::= (*) 'R' 
+
+
+LR0State 14
+    Item: T ::= T '/' St (*)
+        Lookaheads: ')', '+', '-', '*', '/', ';'
+
+
+LR0State 15
+    Item: T ::= T '*' St (*)
+        Lookaheads: ')', '+', '-', '*', '/', ';'
+
+
+LR0State 16
+    On St Go To 2
+    On F Go To 3
+    On '(' Go To 4
+    On number Go To 5
+    On 'S' Go To 6
+    On 'R' Go To 7
+    On T Go To 19
+    Item: T ::= (*) T '*' St 
+
+    Item: T ::= (*) T '/' St 
+
+    Item: E ::= E '+' (*) T 
+
+    Item: T ::= (*) St 
+
+    Item: St ::= (*) 'S' F 
+
+    Item: St ::= (*) F 
+
+    Item: F ::= (*) number 
+
+    Item: F ::= (*) '(' E ')' 
+
+    Item: F ::= (*) 'R' 
+
+
+LR0State 17
+    On St Go To 2
+    On F Go To 3
+    On '(' Go To 4
+    On number Go To 5
+    On 'S' Go To 6
+    On 'R' Go To 7
+    On T Go To 18
+    Item: T ::= (*) T '*' St 
+
+    Item: T ::= (*) T '/' St 
+
+    Item: E ::= E '-' (*) T 
+
+    Item: T ::= (*) St 
+
+    Item: St ::= (*) 'S' F 
+
+    Item: St ::= (*) F 
+
+    Item: F ::= (*) number 
+
+    Item: F ::= (*) '(' E ')' 
+
+    Item: F ::= (*) 'R' 
+
+
+LR0State 18
+    On '*' Go To 12
+    On '/' Go To 13
+    Item: T ::= T (*) '*' St 
+
+    Item: T ::= T (*) '/' St 
+
+    Item: E ::= E '-' T (*)
+        Lookaheads: ')', '+', '-', '*', '/', ';'
+
+
+LR0State 19
+    On '*' Go To 12
+    On '/' Go To 13
+    Item: T ::= T (*) '*' St 
+
+    Item: T ::= T (*) '/' St 
+
+    Item: E ::= E '+' T (*)
+        Lookaheads: ')', '+', '-', '*', '/', ';'
+
+
+LR0State 20
+    Item: Prog ::= Prog Stmt ';' (*)
+        Lookaheads: 'R', '(', endoffile, number, 'S'
+
+
+LR0State 21
+    Item: St ::= 'S' F (*)
+        Lookaheads: ')', '+', '-', '*', '/', ';'
+
+
+LR0State 22
+    On ')' Go To 23
+    On '+' Go To 16
+    On '-' Go To 17
+    Item: E ::= E (*) '+' T 
+
+    Item: F ::= '(' E (*) ')' 
+
+    Item: E ::= E (*) '-' T 
+
+
+LR0State 23
+    Item: F ::= '(' E ')' (*)
+        Lookaheads: ')', '+', '-', '*', '/', ';'
+
+
+Parsegen completed.
