@@ -21,7 +21,7 @@
 18	Ben	Willett 	Defender	6-6	210	Sr		Morton, Illinois	Morton
 19	Benjamin	Sizelove	Defender	6-2	195	Fr		Grayslake, Illinois	Grayslake Central
 20	Rafael	Broseghini	Midfielder	5-11	160	So		Rio De Janeiro, Brazil		Colegio Andilews
-21	Teo	Jubé	Midfielder	5-10	150	So		Rio de Janeiro, Brazil		Escola Parque Gavea
+21	Teo	JubÃ©	Midfielder	5-10	150	So		Rio de Janeiro, Brazil		Escola Parque Gavea
 22	Jon	Gednalske 	Forward	6-1	190	Sr		Sioux Falls, S.D.	Lincoln
 23	Nigel	Nielsen 	Midfielder	6-0	170	Sr		Spencer, Iowa	Spencer
 24	Isaac	Marquardt	Midfielder	5-8	155	So		Decorah, Iowa	Decorah
