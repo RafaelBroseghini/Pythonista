@@ -40,3 +40,10 @@
 
 ## Prefix2Postfix;Infix_eval ```and``` TuringMachine ```and``` calc :vhs:
 * **Course: CS260 \| Year taken: 2017**
+  * **Overarching topic: Computational Models**
+    * *DFA*
+    * *NFA*
+    * *Pushdown Automata*
+    * *Context Free Grammar*
+    * *P==NP?*
+    * *Turing Machine*
