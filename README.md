@@ -6,7 +6,7 @@
 > Although, there have been other courses I took since 2015 that are not included in this repository.
 > Some of the code are self explanatory and some have comments that will guide you through. Have fun!
 
-## CS_150_Intro_to_CS
+## CS_150_Intro_to_CS :books:
 
 * **Course: CS150 \| Year taken: 2015**
     * **Overarching Topic: Introduction to Python.**
@@ -16,7 +16,7 @@
       * *Array comprehension.*
       * *Functions.*
 
-## Data Structures \| OOP
+## Data Structures \| OOP :computer:
 * **Course: CS 160 \| Year taken: 2016**
   * **Overarching Topic: Data Structures & Algorithms**
     * *Object Oriented Programming.*
@@ -38,5 +38,5 @@
       * *Map*
       * *Graph*
 
-## Prefix2Postfix;Infix_eval \| TuringMachine \| calc
-* **Course: CS260 \| Year taken: 2017
+## Prefix2Postfix;Infix_eval \| TuringMachine \| calc :fax:
+* **Course: CS260 \| Year taken: 2017**
