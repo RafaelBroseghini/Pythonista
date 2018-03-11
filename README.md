@@ -22,18 +22,18 @@
     * *Algorithm Analysis O(n)*
     * *Recursion*
     * *Linear Search; Binary Search; Hashing*
-    * *Sorting Algorithms:*
-      * **Bubble Sort**
-      * **Merge Sort**
-      * **Insertion Sort**
-      * **Quick Sort**
-      * **Heap Sort**
-    * *Data Structures*
-      * **Stack**
-      * **Queue**
-      * **Dequeue**
-      * **Linked List**
-      * **Trees**
-      * **Map**
-      * **Graph**
+    * **Sorting Algorithms:**
+      * *Bubble Sort*
+      * *Merge Sort*
+      * *Insertion Sort*
+      * *Quick Sort*
+      * *Heap Sort*
+    * **Data Structures**
+      * *Stack*
+      * *Queue*
+      * *Dequeue*
+      * *Linked List*
+      * *Trees*
+      * *Map*
+      * *Graph*
     * *
