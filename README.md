@@ -38,5 +38,5 @@
       * *Map*
       * *Graph*
 
-## Prefix2Postfix;Infix_eval and TuringMachine and calc :vhs:
+## Prefix2Postfix;Infix_eval ```and``` TuringMachine ```and``` calc :vhs:
 * **Course: CS260 \| Year taken: 2017**
