@@ -10,11 +10,11 @@
 
 * **Course: CS150 \| Year taken: 2015**
     * **Overarching Topic: Introduction to Python.**
-      * *Syntax.*
-      * *Operations.*
-      * *Python's built in Data types ==> List, Dict, Tuple, Set etc.*
-      * *Array comprehension.*
-      * *Functions.*
+      * *Syntax*
+      * *Operations*
+      * *Python's built in Data types ==> List, Dict, Tuple, Set etc*
+      * *Array comprehension*
+      * *Functions*
 
 ## Data Structures \| OOP :computer:
 * **Course: CS 160 \| Year taken: 2016**
@@ -38,5 +38,5 @@
       * *Map*
       * *Graph*
 
-## Prefix2Postfix;Infix_eval \| TuringMachine \| calc :fax:
+## Prefix2Postfix;Infix_eval \| TuringMachine \| calc :vhs:
 * **Course: CS260 \| Year taken: 2017**
