@@ -16,7 +16,7 @@
       * *Array comprehension*
       * *Functions*
 
-## Data Structures \| OOP :computer:
+## Data Structures ```and``` OOP :computer:
 * **Course: CS 160 \| Year taken: 2016**
   * **Overarching Topic: Data Structures & Algorithms**
     * *Object Oriented Programming.*
@@ -38,5 +38,5 @@
       * *Map*
       * *Graph*
 
-## Prefix2Postfix;Infix_eval \| TuringMachine \| calc :vhs:
+## Prefix2Postfix;Infix_eval and TuringMachine and calc :vhs:
 * **Course: CS260 \| Year taken: 2017**
