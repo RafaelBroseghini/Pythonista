@@ -7,10 +7,10 @@
 
 ## CS_150_Intro_to_CS
 
-* Year taken: 2015
-  * Overarching topic: Introduction to Python.
-    * Syntax.
-    * Operations.
-    * Python's built in Data types ==> List, Dict, Tuple, Set etc.
-    * Array comprehension.
-    * Functions.
+* **Year taken: 2015**
+  * **Overarching Topic: Introduction to Python.**
+    * *Syntax.*
+    * *Operations.*
+    * *Python's built in Data types ==> List, Dict, Tuple, Set etc.*
+    * *Array comprehension.*
+    * *Functions.*
