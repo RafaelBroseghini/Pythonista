@@ -1,7 +1,7 @@
 '''
 Author: Rafael Broseghini
 
-Implementation of python like aray built in
+Implementation of python like list built in
 data type using the ctypes module.
 '''
 
