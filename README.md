@@ -7,9 +7,9 @@
 > Some of the code are self explanatory and some have comments that will guide you through. Have fun!
 
 ## TABLE OF CONTENTS:
-   * [CS_150_Intro_to_CS](#1)
+   * [CS_150_Intro_to_CS](#CS_150_Intro_to_CS)
 
-## [CS_150_Intro_to_CS](#1) :books:
+## [CS_150_Intro_to_CS] :books:
 
 * **Course: CS150 \| Year taken: 2015**
     * **Overarching Topic: Introduction to Python.**
