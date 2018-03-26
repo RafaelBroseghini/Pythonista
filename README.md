@@ -8,6 +8,8 @@
 
 ## TABLE OF CONTENTS:
    * [CS_150_Intro_to_CS](#cs_150_intro_to_cs-books)
+   * [Data Structures and OOP](#data-structures-and-oop-computer)
+   * [PostFix;InfixEval & Turing Machine](#)
 
 ## CS_150_Intro_to_CS :books:
 
