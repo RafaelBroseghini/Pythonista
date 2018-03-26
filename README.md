@@ -7,7 +7,7 @@
 > Some of the code are self explanatory and some have comments that will guide you through. Have fun!
 
 ## TABLE OF CONTENTS:
-   * [CS_150_Intro_to_CS](#CS_150_Intro_to_CS)
+   * [CS_150_Intro_to_CS](#cs_150_intro_to_cs)
 
 ## CS_150_Intro_to_CS :books:
 
