@@ -9,7 +9,7 @@
 ## TABLE OF CONTENTS:
    * [CS_150_Intro_to_CS](#cs_150_intro_to_cs-books)
    * [Data Structures and OOP](#data-structures-and-oop-computer)
-   * [PostFix;InfixEval & Turing Machine](#)
+   * [PostFix;InfixEval & Turing Machine](#prefix2postfixinfix_eval-and-turingmachine-and-calc-vhs)
 
 ## CS_150_Intro_to_CS :books:
 
