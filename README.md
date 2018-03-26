@@ -6,7 +6,10 @@
 > Although, there have been other courses I took since 2015 that are not included in this repository.
 > Some of the code are self explanatory and some have comments that will guide you through. Have fun!
 
-## CS_150_Intro_to_CS :books:
+## TABLE OF CONTENTS:
+   * [CS_150_Intro_to_CS](#1)
+
+## CS_150_Intro_to_CS :books: (#1)
 
 * **Course: CS150 \| Year taken: 2015**
     * **Overarching Topic: Introduction to Python.**
