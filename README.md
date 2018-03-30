@@ -6,6 +6,11 @@
 > Although, there have been other courses I took since 2015 that are not included in this repository.
 > Some of the code are self explanatory and some have comments that will guide you through. Have fun!
 
+## TABLE OF CONTENTS:
+   * [CS_150_Intro_to_CS](#cs_150_intro_to_cs-books)
+   * [Data Structures and OOP](#data-structures-and-oop-computer)
+   * [PostFix;InfixEval & Turing Machine](#prefix2postfixinfix_eval-and-turingmachine-and-calc-vhs)
+
 ## CS_150_Intro_to_CS :books:
 
 * **Course: CS150 \| Year taken: 2015**
