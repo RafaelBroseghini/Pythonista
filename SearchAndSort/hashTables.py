@@ -11,7 +11,7 @@ def findElem(elem,arr):
     return False
 
 
-print("Functional Programming of HashTable:\n")
+print("Hash Table using hashing function and findElem:\n")
 arr = [None] * 11
 temp = [54,26,93,17,77,31]
 
