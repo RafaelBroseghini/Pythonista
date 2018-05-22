@@ -52,3 +52,10 @@
     * *Context Free Grammar*
     * *P==NP?*
     * *Turing Machine*
+
+## WebScraper
+* **During free time**
+  * **Overarching topic: Scrape Web Pages**
+    * `import requests`
+    * `from bs4 import BeautifulSoup`
+    
