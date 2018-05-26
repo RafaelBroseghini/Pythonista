@@ -1,7 +1,9 @@
 import unittest
 from regexBeginner import *
 
-
+"""
+    This unit test is not perfect. It also shows the print statements from the called functions.
+"""
 class Tester(unittest.TestCase):
     def test_file_extension(self):
         self.assertEqual(file_extension("helloWorld.py"),".py")
