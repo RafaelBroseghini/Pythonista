@@ -15,7 +15,7 @@ class Tester(unittest.TestCase):
         self.assertTrue(aFollowedByThreeBs("aaabbbb"))
         self.assertTrue(aFollowedByThreeBs("ababababbbb"))
         self.assertFalse(aFollowedByThreeBs("ababababb"))
-        self.assertFalse(aFollowedByThreeBs("abbabb"))
+        self.assertFalse(aFollowedByThreeBs("abbabb")) 
 
     
 
