@@ -17,7 +17,11 @@ class Tester(unittest.TestCase):
         self.assertFalse(aFollowedByThreeBs("ababababb"))
         self.assertFalse(aFollowedByThreeBs("abbabb")) 
 
-    
+    def test_valid_fraction(self):
+        self.assertTrue("1/32")
+        self.assertTrue("98/54")
+        self.assertTrue("9/22")
+        self.assertTrue("12/1")
 
 if __name__ == '__main__':
     unittest.main()
