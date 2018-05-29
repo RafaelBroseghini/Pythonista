@@ -1,3 +1,9 @@
+"""
+    Author: Rafa Broseghini
+    Date: 05/29/2018
+    Problem: Smallest divisible number from 1 to 20 (individually) without remainder.
+"""
+
 import time
 
 def smallest_divisible():
