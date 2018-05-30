@@ -1,0 +1,19 @@
+         Vitória - BA          [1;34mX[1;33m       Internacional - RS      [0m|
+      Internacional - RS       [1;34mX[1;33m           Sport - PE          [0m|
+          Sport - PE           [1;34mX[1;33m         Atlético - MG         [0m|
+        Atlético - MG          [1;34mX[1;33m       Vasco da Gama - RJ      [0m|
+      Vasco da Gama - RJ       [1;34mX[1;33m          Paraná - PR          [0m|
+         Paraná - PR           [1;34mX[1;33m        Chapecoense - SC       [0m|
+       Chapecoense - SC        [1;34mX[1;33m           Ceará - CE          [0m|
+          Ceará - CE           [1;34mX[1;33m         São Paulo - SP        [0m|
+        São Paulo - SP         [1;34mX[1;33m         Botafogo - RJ         [0m|
+        Botafogo - RJ          [1;34mX[1;33m         Cruzeiro - MG         [0m|
+        Cruzeiro - MG          [1;34mX[1;33m         Palmeiras - SP        [0m|
+        Palmeiras - SP         [1;34mX[1;33m          Grêmio - RS          [0m|
+         Grêmio - RS           [1;34mX[1;33m        Fluminense - RJ        [0m|
+       Fluminense - RJ         [1;34mX[1;33m         Flamengo - RJ         [0m|
+        Flamengo - RJ          [1;34mX[1;33m           Bahia - BA          [0m|
+          Bahia - BA           [1;34mX[1;33m        Corinthians - SP       [0m|
+       Corinthians - SP        [1;34mX[1;33m          América - MG         [0m|
+         América - MG          [1;34mX[1;33m         Atlético - PR         [0m|
+        Atlético - PR          [1;34mX[1;33m          Santos - SP          [0m|
