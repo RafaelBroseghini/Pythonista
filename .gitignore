@@ -28,3 +28,6 @@ pip-log.txt
 venv
 *.pyc
 build
+
+#Project Euler
+Project_Euler/
