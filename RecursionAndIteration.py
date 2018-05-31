@@ -30,10 +30,9 @@ try:
          print(recursive_fibonacci(i))
          
 except Exception as ie:
-   print('Must be an integer.')
-print()
-print()
-print('Fibonacci sequence using iterative method')
+   print('Must be an integer.\n')
+
+print('\nFibonacci sequence using iterative method')
 iterative_fibonacci(10)
 
 
@@ -44,15 +43,12 @@ def recursive_factorial(n):
     else:
         return n * recursive_factorial(n-1)
 n = 10
-print()
-print()
-print('Factorial of every number from 1 to 10 using recursive method:')
-print()
+print('\n\nFactorial of every number from 1 to 10 using recursive method:\n')
 for i in range(1, n+1):
     print('Recursive factorial of ' + str(i) + ':')  
     print(recursive_factorial(i))
-print()
-print()
+
+print("\n")
 
 def factorial(n):
     product = 1
