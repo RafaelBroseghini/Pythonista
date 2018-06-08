@@ -1,10 +1,19 @@
 from bs4 import BeautifulSoup
-import random, requests, re, datetime, time
+import requests, re, datetime, time
 
 TODAY = datetime.date.today()
 
+def choose_division():
+    inp = input("Which division? (a,b,c): ")
+    while inp not in ['a','b','c']:
+        print("Division '{}' does not exist in the CBF.\n".format(inp))
+        inp = input("Which division? (a,b,c): ")
+    return inp
+
+
 def make_soup():
-    url = "https://www.cbf.com.br/futebol-brasileiro/competicoes/campeonato-brasileiro-serie-a#.Ww4ABXUvw5l"
+    division = choose_division()
+    url = "https://www.cbf.com.br/futebol-brasileiro/competicoes/campeonato-brasileiro-serie-{}#.Ww4ABXUvw5l".format(division)
     data = requests.get(url).text
     soup = BeautifulSoup(data, "html.parser")
     return soup
@@ -31,7 +40,7 @@ def get_rodada(soup):
 
 def write_to_file(lst):
     with open("brasileiraoGames.txt", "w") as file:
-        for g in range(len(lst)-1):
+        for g in range(0,len(lst)-1,2):
             file.write("{:^30} \033[1;34mX\033[1;33m {:^30}\033[0m|\n"
             .format(lst[g].get("title"), lst[g+1].get("title")))
 
@@ -44,12 +53,13 @@ def main():
     start = time.time()
     soup = make_soup()
     threshold = get_dates(soup)
+    print(threshold, TODAY)
     """ threshold is the last game date for "Rodada". If less than TODAY we must scrape the page again and write to file. 
     else we read from file."""
 
     print("\n\033[1;35m{:^60}\033[0m".format(get_rodada(soup)))
     print("-"*64)
-    if threshold < TODAY:
+    if threshold > TODAY:
         games = get_games(soup)
         write_to_file(games)
         read_from_file()
