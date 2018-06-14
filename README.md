@@ -1,4 +1,4 @@
-# Pythonist :snake:
+# Pythonista :snake:
 
 # (Currently being updated)
 
