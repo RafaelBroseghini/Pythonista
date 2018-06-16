@@ -2,7 +2,7 @@ class BinarySearchTree(object):
 
     """
         No deletion method on this one.
-        For purposes of study.
+        For purposes of study. 
     """
 
     def __init__(self, data):
