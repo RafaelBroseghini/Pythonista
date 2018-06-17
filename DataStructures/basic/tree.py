@@ -1,3 +1,5 @@
+from queue import Queue
+
 class BinaryTree(object):
     def __init__(self,root):
         self.root       = root
@@ -34,23 +36,47 @@ def maxHeight(tree):
     if tree is None:
         return 0
     
-    # print(tree.root)
-    
     leftH = maxHeight(tree.leftChild)
     rightH = maxHeight(tree.rightChild)
 
     return max(leftH, rightH) + 1
 
-def main():
-    b = BinaryTree(10)
-    b.insertLeft(9)
-    a = b.getLeftChild()
-    for i in range(100):
-        a.insertRight(i)
-            # for i in range(10):
-    #     b.insertLeft(i)
-    #     b.insertRight(i+10)
+def BFS(tree):
+    visited = set()
+    q = Queue()
+    q.enqueue(tree)
+    while not q.isEmpty():
+        current = q.dequeue()
+        print(current.getRootVal())
+        if current not in visited:
+            visited.add(current)
+            if current.getLeftChild() != None:
+                q.enqueue(current.getLeftChild())
+            if current.getRightChild() != None:
+                q.enqueue(current.getRightChild())
+    return 0
 
-    print(maxHeight(b))
+
+
+def main():
+    b = BinaryTree(1)
+    b.insertLeft(2)
+    b.insertRight(3)
+    a = b.getLeftChild()
+    a.insertLeft(4)
+    a.insertRight(5)
+    c = b.getRightChild()
+    c.insertLeft(6)
+    c.insertRight(7)
+    d = a.getLeftChild()
+    d.insertLeft(8)
+    d.insertRight(9)
+
+
+    print("Breadth first search on the tree: ")
+    BFS(b)
+
+
+    print("\nHeight of tree: \033[1;33m{}\033[0m\n".format(maxHeight(b)))
 if __name__ == '__main__':
     main()
