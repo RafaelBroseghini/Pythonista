@@ -1,3 +1,7 @@
+import random
+
+
+
 class Node(object):
     """docstring for Node."""
     def __init__(self, data):
@@ -30,25 +34,61 @@ class LinkedList(object):
         return current
 
 
-l = LinkedList()
-for item in range(1,11):
-    l.add2Head(item)
+    """
+        These methods below are for experimentation purposes.
 
 
-current = l.head
+        -----------------------------------------------------
+    """
 
-print("Head is {}".format(current.data))
-while current.next != None:
-    print(current.data, current.next.data)
-    current = current.next
-print(current.data, current.next)
+    def size(self):
+        current = self.head
+        count = 0
+        while current != None:
+            count += 1
+            current = current.next
+        return count
+
+    def getMiddleElem(self):
+
+        """
+            This method depends if size is even or odd. Need consensus.
+        """
+
+        current = self.head
+        i = 1
+        while i < self.size() // 2:
+            current = current.next
+            i += 1
+        return current
+    
+    def printLinkedList(self):
+        current = self.head
+
+        print("\nHead is: {}".format(current.data))
+        while current.next != None:
+            print(current.data, current.next.data)
+            current = current.next
+        print(current.data, current.next)
+        print()
 
 
-print("Removed head: {}".format(l.removeFromHead().data))
-current = l.head
+def main():
+    
+    random.seed(11)
 
-print("Head is {}".format(current.data))
-while current.next != None:
-    print(current.data, current.next.data)
-    current = current.next
-print(current.data, current.next)
+    l = LinkedList()
+    for item in range(1,11):
+        l.add2Head(item+random.randint(32,876))
+
+
+    print("Size: ", l.size())
+    print("Middle Elem:",l.getMiddleElem().data)
+
+    l.printLinkedList()
+
+    print("Removed head: {}".format(l.removeFromHead().data))
+
+    l.printLinkedList()
+if __name__ == '__main__':
+    main()
