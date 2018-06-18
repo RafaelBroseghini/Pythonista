@@ -7,8 +7,16 @@ import requests
 
 color_dict = {0:"32",1:"34",2:"34",3:"34",16:"31",17:"31",18:"31",19:"31"}
 
+def choose_division():
+    inp = input("Which division? (a,b,c): ")
+    while inp not in ['a','b','c']:
+        print("Division '{}' does not exist in the CBF.\n".format(inp))
+        inp = input("Which division? (a,b,c): ")
+    return inp
+
 def make_soup():
-    url = "https://globoesporte.globo.com/futebol/brasileirao-serie-a/"
+    division = choose_division()
+    url = "https://globoesporte.globo.com/futebol/brasileirao-serie-{}/".format(division)
     data = requests.get(url).text
     soup = BeautifulSoup(data, "html.parser")
     return soup
