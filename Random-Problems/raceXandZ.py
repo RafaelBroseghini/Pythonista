@@ -14,14 +14,14 @@ def get_distance():
         except:
             sys.stdout.write("Not a valid distance. Try again!\n")
 
-def race(d):
+def race(distance):
     inp = getch.getche()
     correct = MOVES["x"]
     distance_ran = 0
     if inp == correct:
         distance_ran += 1
         start = time.time()
-        while distance_ran < d:
+        while distance_ran < distance:
             correct = MOVES[correct]
             while inp != correct:
                 inp = getch.getche()
