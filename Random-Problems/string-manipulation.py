@@ -1,24 +1,22 @@
+import unittest
+
 def make_string(inp_str):
-    print("This function makes a new string composed of the first two and last two characters in the original string.\n")
     if len(inp_str) < 2:
         return ""
     else:
         new_str = ""
         first, second, one_before_last, last = inp_str[0], inp_str[1], inp_str[len(inp_str)-2], inp_str[-1]
         new_str = "{}{}{}{}".format(first, second, one_before_last, last)
-        return "New string: {}".format(new_str)
+        return new_str
 
 def change_first_char(inp_str):
-    print("This function substitutes all characters that  are equal to the first character by a $. \n")
     first_char = inp_str[0]
     inp_str = list(inp_str)
-    for char in range(1,len(inp_str)-1):
+    for char in range(1,len(inp_str)):
         if inp_str[char] == first_char:
             inp_str[char] = "$"
 
-    inp_str = "".join(inp_str)
-
-    return inp_str
+    return "".join(inp_str)
 
 def translate_to_pirate(inp_str):
 
@@ -43,12 +41,14 @@ def translate_to_pirate(inp_str):
     return inp_str.lower()
 
 
-def main():
-    user_inp = input("Enter a string: ")
-    print(make_string(user_inp),"\n")
+class Tester(unittest.TestCase):
+    def test_checkMakeString(self):
+        self.assertEqual(make_string("rafaelbroseghini"),"rani")
+        self.assertNotEqual(make_string("rafaelbroseghini"),"reni")
 
-    print(change_first_char(user_inp),"\n")
+    def test_change_first_char(self):
+        self.assertEqual(change_first_char("rafaelrararra"),"rafael$a$a$$a")
 
-    print(translate_to_pirate(user_inp),"\n")
+
 if __name__ == '__main__':
-    main()
+    unittest.main()
