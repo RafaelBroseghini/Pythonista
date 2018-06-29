@@ -1,8 +1,11 @@
-'''Unordered Array'''
+'''
+    Unordered Array
+    Time Complexity: O(n)
+'''
 def seq_search(arr,elem):
     pos = 0
     found = False
-
+    # Will iterate until found or end of array.
     while pos < len(arr) and not found:
         if arr[pos] == elem:
             found = True
@@ -10,19 +13,17 @@ def seq_search(arr,elem):
     return found
 
 
-
-arr = [1,2,3,4,5,6,7,8,9,10]
-
-print(seq_search(arr,5))
-
-
-'''Ordered Array'''
+'''
+    Ordered Array
+    Time Complexity: O(n)
+''' 
 def seq_search_ordered(arr,elem):
     pos = 0
     found = False
     stopped = False
 
     while pos < len(arr) and not stopped:
+        # Will break out of the loop if current elem > parameter passed.
         if arr[pos] > elem:
             stopped = True
         elif arr[pos] == elem:
@@ -32,6 +33,15 @@ def seq_search_ordered(arr,elem):
 
     return found
 
-lst = [33,44,56,189,999,1234,55442,888998]
 
-print(seq_search_ordered(lst,1235))
+    
+    
+def main():
+    arr = [20,54,1,2,5,78,5,322,23,14]
+    print(seq_search(arr,5))
+    
+    lst = [33,44,56,189,999,1234,55442,888998]
+    print(seq_search_ordered(lst,1235))
+    
+if __name__ == "__main__":
+    main()
