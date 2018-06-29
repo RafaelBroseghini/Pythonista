@@ -43,7 +43,7 @@
       * *Array comprehension*
       * *Functions*
 
-## Data Structures ```and``` OOP :computer:
+## OOP :computer:
 * **Course: CS 160 \| Year taken: 2016**
   * **Overarching Topic: Data Structures & Algorithms**
     * *Object Oriented Programming.*
