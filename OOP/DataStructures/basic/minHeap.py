@@ -31,7 +31,7 @@ class BinHeap(object):
             mc = self.minChild(i)
             if self.heapList[i] > self.heapList[mc]:
                 self.heapList[i], self.heapList[mc] = self.heapList[mc], self.heapList[i]
-            i += 1
+            i = mc
 
     def minChild(self, i):
         if i * 2 + 1 > self.currentSize:
@@ -63,15 +63,20 @@ class BinHeap(object):
             
 
 class Tester(unittest.TestCase):
+    def setUp(self):
+        self.heap = BinHeap()
+        self.heap.insert(8)
+        self.heap.insert(1)
+        self.heap.insert(7)
+        self.heap.insert(6)
+        self.heap.insert(5)
+        self.heap.insert(3)
+
     def test_BinHeap(self):
-        b = BinHeap()
-        b.insert(8)
-        b.insert(1)
-        b.insert(7)
-        b.insert(6)
-        b.insert(5)
-        b.insert(3)
-        self.assertEqual(b.heapList, [0,1,5,3,8,6,7])
+        self.assertEqual(self.heap.heapList, [0,1,5,3,8,6,7])
+    
+    def test_size(self):
+        self.assertEqual(self.heap.currentSize,6)
     
 if __name__ == '__main__':
     unittest.main()
