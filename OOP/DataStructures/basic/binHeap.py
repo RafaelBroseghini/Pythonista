@@ -1,6 +1,9 @@
 import unittest
 
 class BinHeap(object):
+    """
+        Min Heap.
+    """
     def __init__(self):
         self.heapList = [0]
         self.currentSize = 0
