@@ -15,6 +15,7 @@ class Company(object):
         while not raised and not highest_pos:
             try:
                 if isinstance(emp, self.hierarchy[e]):
+                    print("Raise! $$$")
                     emp = self.hierarchy[e+1](emp.name,emp.department)
                     raised = True
             except:

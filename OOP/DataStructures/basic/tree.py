@@ -54,7 +54,7 @@ def BFS(tree):
                 q.enqueue(current.getLeftChild())
             if current.getRightChild() != None:
                 q.enqueue(current.getRightChild())
-    return 0
+    return visited
 
 
 
