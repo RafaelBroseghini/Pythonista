@@ -1,6 +1,7 @@
 import re
 import random
 import string
+from announcer import Announcer
 
 class Hangman(object):
     def __init__(self, words = [], used_letters = [], tries=10):
