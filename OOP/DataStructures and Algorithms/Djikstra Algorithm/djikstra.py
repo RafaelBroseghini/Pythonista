@@ -71,7 +71,7 @@ def djikstra(graph, source, target):
 
 
 def get_shortest_path(source, target):
-    # Unpack dijkstra, since it returns a tuple.
+    # Unpack dijkstra function, since it returns a tuple.
     distances, predecessors = djikstra(graph, source, target)
     current = target
     path = []
@@ -81,11 +81,30 @@ def get_shortest_path(source, target):
         current = predecessors[current]
     path.insert(0, current)
 
-    print("Shortest path from {} to {} is: {}".format(source, target, path))
-    return "Shortest Distance from {} to {} is: {}".format(source, target, distances[target])
+    return distances[target], path
+
+# Save source, target, distance, path to a file for lookup.
+# This avoids having to compile the program everytime we
+# need to find the shortest path from/to a new node.
+
+def save_to_file():
+    # All vertexes in the graph.
+    nodes = [k for k in graph.keys()]
+    with open("graph_lookup.txt","w+") as file:
+        file.write("{:<10} {:<10} {:<10} {:<10}\n".format("SOURCE", "TARGET", "DISTANCE", "PATH"))
+
+        for v in nodes:
+            for j in nodes:
+                # Here we check if nodes aren't the same. Distance is 0 from node to itself.
+                if v != j:
+                    res = get_shortest_path(v, j)
+                    file.write("{:<10} {:<10} {:<10} {:<10}\n".format(v, j, res[0], str(res[1])))
+
 
 
 def main():
-    print(get_shortest_path("a","e"))
+    save_to_file()
+    # print(get_shortest_path("a","e"))
+
 if __name__ == '__main__':
     main()
