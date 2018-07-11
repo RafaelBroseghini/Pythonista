@@ -1,5 +1,5 @@
 import sys
-import inspect
+import datetime
 
 """
     Note: 
@@ -31,14 +31,14 @@ graph = {
 }
 
 # Method that finds neighbor with smallest distance.
-def get_min_nbr(key, visited):
-    minNbr_value = sys.maxsize
-    for nbr in graph[key]: 
-        if graph[key][nbr] < minNbr_value and nbr not in visited:
-            minNbr_value = graph[key][nbr]
-            minNbr = nbr
+def get_min_neighbor(key, visited):
+    min_neighbor_distance = sys.maxsize
+    for neighbor in graph[key]: 
+        if graph[key][neighbor] < min_neighbor_distance and neighbor not in visited:
+            min_neighbor_distance = graph[key][neighbor]
+            min_neighbor_key = neighbor
 
-    return minNbr
+    return min_neighbor_key
 
 
 
@@ -55,16 +55,16 @@ def djikstra(graph, source, target):
     while visited != unvisited:
         visited.append(current)
         distance = distances[current]
-        for nbr in graph[current]:
+        for neighbor in graph[current]:
             # NOTE: Here we check if current distance is less than
             # previously know distance. If True, we set distance to current distance.
-            if graph[current][nbr] + distance < distances[nbr]:
-                distances[nbr]     = graph[current][nbr] + distance
-                predecessors[nbr]  = current
+            if graph[current][neighbor] + distance < distances[neighbor]:
+                distances[neighbor]     = graph[current][neighbor] + distance
+                predecessors[neighbor]  = current
 
         # NOTE: I will refactor code and figure out a way to return false if cannot reach target.
         try:
-            current = get_min_nbr(current, visited)
+            current = get_min_neighbor(current, visited)
         except:
             return distances, predecessors
             # return "Shortest path from {} to {} is: {}".format(source, target, distances[target])
@@ -100,6 +100,8 @@ def save_to_file():
                     res = get_shortest_path(v, j)
                     file.write("{:<10} {:<10} {:<10} {:<10}\n".format(v, j, res[0], str(res[1])))
 
+        # Log last date algorithm was compiled.
+        file.write("\nDATE: {}".format(datetime.datetime.now()))
 
 
 def main():
