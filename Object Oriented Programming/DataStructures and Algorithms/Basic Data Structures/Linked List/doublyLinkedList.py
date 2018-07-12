@@ -5,8 +5,6 @@ class Node(object):
         self.next = None
         self.prev = None
 
-
-
 class DoublyLinkedList(object):
     """docstring for LinkedList."""
     def __init__(self):
