@@ -1,5 +1,9 @@
 import os
 
+"""
+Program: Get cumulative disk usage size in bytes of path passed
+in as argument and all its children.
+"""
 
 def get_size_dir_bfs(pwd):
     queue = []
