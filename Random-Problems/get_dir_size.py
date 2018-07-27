@@ -54,9 +54,9 @@ def get_size_dir_recursive(pwd):
 
 def main():
     inp = input("Full directory path: ")
-    print("The cumulative disk space of {} is: {} bytes".format(inp, get_size_dir_bfs(inp)))
-    print("The cumulative disk space of {} is: {} bytes".format(inp, get_size_dir_dfs(inp)))
-    print("The cumulative disk space of {} is: {} bytes".format(inp, get_size_dir_recursive(inp)))
+    print("Breadth First Search cumulative disk usage size of {} is: {} bytes".format(inp, get_size_dir_bfs(inp)))
+    print("Depth First Search cumulative disk usage size of {} is: {} bytes".format(inp, get_size_dir_dfs(inp)))
+    print("Recursive cumulative disk usage size of {} is: {} bytes".format(inp, get_size_dir_recursive(inp)))
 
 if __name__ == '__main__':
     main()
