@@ -2,6 +2,12 @@
 1. A Data Structure refers to a **systematic way of organizing data**.
 2. An algorithm refers to the step by step procedure for perfoming a task in finite time.
 
+### First of all, why should we care?
+1. Being able to measure an algorithm's efficiency (asymptotically) regardless of the hardware/software it runs in,
+is an important process in designing an efficient algorithm.
+2. We are often more concerned on how the algorithm's runtime increases as the size of input increases. Not in seconds, minutes
+although these are good for benchmarks, but proportionally to input size.
+
 ### So how do we classify an algorithm as good?
 1. We must have precise ways of calculating it's runtime and space usage.
 
@@ -41,3 +47,4 @@ Example: log2(12) = (12/2)/2)/2)/2) = (0.75 <= 1) log2(12) = 4
 * **Drop non dominant terms and constants.**
     * O(N) + O(logN) + 5 = O(N)
 * **Describe in the simplest terms.**
+* **Be aware of space complexity as well. It is common to trade time for space when designing an algorithm.**
