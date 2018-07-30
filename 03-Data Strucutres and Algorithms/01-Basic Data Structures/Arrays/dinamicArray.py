@@ -5,6 +5,7 @@ data type using the ctypes module.
 '''
 import sys
 import ctypes
+import unittest
 
 class DynamicArray(object):
     '''
@@ -31,14 +32,14 @@ class DynamicArray(object):
 
         return self.A[k]
 
-    def append(self, ele):
+    def append(self, element):
         """
         Add element to end of the array
         """
         if self.n == self.capacity:
             self._resize(2*self.capacity)
 
-        self.A[self.n] = ele
+        self.A[self.n] = element
         self.n += 1
     
     def pop(self, idx=sys.maxsize):
@@ -82,6 +83,15 @@ class DynamicArray(object):
         self.A[i] = self.A[i-1]
 
       self.A[idx] = element
+    
+    def index(self, element):
+      """
+      Return index of first matched item in array to
+      element parameter.
+      """
+      for i in range(self.n):
+        if self.A[i] == element:
+          return i
 
     def _resize(self,new_cap):
         """
@@ -101,3 +111,37 @@ class DynamicArray(object):
         Returns a new array with new_cap capacity
         """
         return (new_cap * ctypes.py_object)()
+
+
+
+
+def main():
+  array = DynamicArray()
+  array.append(10)
+  array.append(20)
+  array.append(30)
+  array.append(40)
+  array.append(50)
+
+  assert array.n == 5
+  assert array[4] == 50
+
+  array.insert(4, 200)
+
+  assert array.n == 6
+  assert array[4] == 200
+  assert array[5] == 50
+
+  array.pop()
+  assert array.n == 5
+  array.pop(3)
+  assert array.n == 4
+  assert array[3] == 200
+
+  assert array.index(200) == 3
+  assert array.index(30) == 2
+  print("\033[32mPassed all tests!\033[0m")
+
+
+if __name__ == "__main__":
+  main()
