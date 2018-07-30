@@ -3,7 +3,6 @@ Author: Rafael Broseghini
 Implementation of python like list built in
 data type using the ctypes module.
 '''
-
 import sys
 import ctypes
 
@@ -44,25 +43,45 @@ class DynamicArray(object):
     
     def pop(self, idx=sys.maxsize):
       """
-      Pop element from any index in array.
-      Return popped element.
+      Pop element from end of array.
       """
       if self.n == (self.capacity // 4):
         self._resize(self.capacity//2)
 
       if idx == sys.maxsize:
         idx = self.n - 1
-      elif idx > (self.n - 1) or idx < 0:
+      elif idx < 0 or idx > (self.n-1):
         raise Exception("Index out of range!")
-
+ 
       val = self.A[idx]
       self.A[idx] = None
-      #  Move items to the left, swapping i and i-1 indexes.
+
+      # Shift items to the left.
       for i in range(idx+1, self.n):
         self.A[i],self.A[i-1] = self.A[i-1], self.A[i]
+
       self.n -= 1
       return val
+    
+    def insert(self, idx="", element=""):
+      """
+      Insert element at any index in array.
+      Shifting elements to the right.
+      """
+      # Here we make use of append to take
+      # care of checking capacity and increasing n.
+      self.append(None)
+      
+      if idx == "":
+        raise Exception("No index specified!")
+      elif idx < 0 or idx > (self.n-1):
+        raise Exception("Index out of range!")
 
+      # Shift items to the right.
+      for i in range(self.n, idx, -1):
+        self.A[i] = self.A[i-1]
+
+      self.A[idx] = element
 
     def _resize(self,new_cap):
         """
