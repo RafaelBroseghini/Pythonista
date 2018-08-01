@@ -1,3 +1,8 @@
+"""
+Basic implementation of a Web Browser
+'back' and 'forward' button operations.
+"""
+
 from pythonds.basic.stack import Stack
 
 __author__ = "Rafael Broseghini"
@@ -34,3 +39,13 @@ class Browser(object):
       raise Exception("Can't go back to nowhere.")
     elif url == "forward" and self.forward.isEmpty():
       raise Exception("Can't go forward to nowhere.")
+  
+  def go_back(self):
+    self.forward.push(self.current_url)
+    previous = self.backward.pop()
+    self.current_url = previous
+  
+  def go_forward(self):
+    self.backward.push(self.current_url)
+    forward = self.forward.pop()
+    self.current_url = forward
