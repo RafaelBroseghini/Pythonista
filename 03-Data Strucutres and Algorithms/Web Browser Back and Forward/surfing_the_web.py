@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 This python script imitates how
 the 'back' and 'forward' buttons
@@ -21,21 +22,12 @@ def surf_the_web(browser):
     browser.check_back_and_forth(inp)
 
     if inp == "back":
-      browser.forward.push(browser.current_url)
-      print("forward", browser.forward.items)
-      previous = browser.backward.pop()
-      browser.current_url = previous
-      print("Current: ", previous)
+      browser.go_back()
     elif inp == "forward":
-      browser.backward.push(browser.current_url)
-      print("backward", browser.backward.items)
-      forward = browser.forward.pop()
-      browser.current_url = forward
-      print("Current: ", forward)
+      browser.go_forward()
     else:
       if current != browser.current_url:
         browser.backward.push(browser.current_url)
-        print("back", browser.backward.items)
         browser.current_url = current
 
     inp = input("Site you want to visit: ")
