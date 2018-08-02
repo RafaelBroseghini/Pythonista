@@ -1,3 +1,8 @@
+"""
+Program that checks if string is a palindrome
+using the Deque data structure.
+"""
+
 class Deque:
     def __init__(self):
         self.items = []
