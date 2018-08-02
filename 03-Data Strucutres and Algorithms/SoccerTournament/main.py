@@ -1,7 +1,11 @@
+#!/usr/bin/env python
+
 '''
 Name: Rafael Broseghini
-Purpose : Soccer Tournament LCMS.
+Implementation of a 'Soccer Tournament' using data
+from the LCMS website stored in a text file.
 '''
+
 import random
 from team import Team
 from tournament import Tournament
