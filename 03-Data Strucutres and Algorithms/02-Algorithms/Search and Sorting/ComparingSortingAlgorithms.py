@@ -1,9 +1,7 @@
-'''
-Name: Rafael Broseghini
-Prof: Roman Yasinovskyy
+#!/usr/bin/env python
 
-Date: 04/08/2017
-Filename: ComparingSortingAlgorithms.py
+'''
+Implementation of Sorting Algorithms in Python.
 '''
 import time
 import random
