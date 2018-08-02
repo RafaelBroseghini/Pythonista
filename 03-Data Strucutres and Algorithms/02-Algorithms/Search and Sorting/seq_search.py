@@ -1,8 +1,16 @@
-'''
+#!/usr/bin/env python
+
+"""
+Implementation of sequential search on both
+ordered and unordered arrays.
+"""
+
+
+def seq_search(arr,elem):
+    '''
     Unordered Array
     Time Complexity: O(n)
-'''
-def seq_search(arr,elem):
+    '''
     pos = 0
     found = False
     # Will iterate until found or end of array.
@@ -13,11 +21,12 @@ def seq_search(arr,elem):
     return found
 
 
-'''
+
+def seq_search_ordered(arr,elem):
+    '''
     Ordered Array
     Time Complexity: O(n)
-''' 
-def seq_search_ordered(arr,elem):
+    ''' 
     pos = 0
     found = False
     stopped = False
