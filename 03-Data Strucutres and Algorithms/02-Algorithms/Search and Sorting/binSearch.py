@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
 """
-Implementation of Binary Search in Python.
+Implementation of Binary Search in Python using both
+iterative and recursive approach.
 """
+
 def binSearch(arr, elem):
     first = 0
     last = len(arr) - 1
