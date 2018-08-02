@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+
+"""
+Implementation of Binary Search in Python.
+"""
 def binSearch(arr, elem):
     first = 0
     last = len(arr) - 1
