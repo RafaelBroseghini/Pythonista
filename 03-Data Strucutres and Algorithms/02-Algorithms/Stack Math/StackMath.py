@@ -1,5 +1,9 @@
-# RAFAEL BROSEGHINI
-# CS 160
+#!/usr/bin/env python
+
+"""
+Implementation of a Math Calculator for
+basic operations using a Stack Data Structure.
+"""
 
 class Stack:
     def __init__(self):
