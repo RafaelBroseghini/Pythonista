@@ -1,10 +1,11 @@
+#!/usr/bin/env python
+
 import sys
 from graph import Graph, Vertex
 
 """ 
-    Validate len of chosen words.
-
-    If word is in graph.
+Implementation of the Word Ladder Algorithm
+using Breadth First Search on a Graph.
 """
 
 def buildGraph(g):
