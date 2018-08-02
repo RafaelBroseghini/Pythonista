@@ -1,6 +1,3 @@
-import sys
-import datetime
-
 """
     Note: 
     
@@ -19,7 +16,8 @@ import datetime
 
 """
 
-
+import sys
+import datetime
 
 # Digraph
 graph = {
