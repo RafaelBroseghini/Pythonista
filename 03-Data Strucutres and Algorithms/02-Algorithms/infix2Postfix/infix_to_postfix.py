@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+
+"""
+Implementation of the conversion from infix
+to postfix notation using a stack.
+"""
+
 from pythonds.basic.stack import Stack
 
 def convert(expression):
