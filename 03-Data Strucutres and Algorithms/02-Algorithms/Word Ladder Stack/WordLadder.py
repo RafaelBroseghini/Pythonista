@@ -1,10 +1,10 @@
-'''
-Name: Rafael Broseghini
-Prof: Roman Yasinovskyy
+#!/usr/bin/env python
 
-Date: 04/10/2017
-Filename: Week9ProjectBroseghini.py
 '''
+Implementation of the Word Ladder Algorithm
+using two stacks.
+'''
+
 # Creating sets for words of 3, 4 and 5 letters from words.txt
 LETTER_WORDS_3 = set()
 LETTER_WORDS_4 = set()
