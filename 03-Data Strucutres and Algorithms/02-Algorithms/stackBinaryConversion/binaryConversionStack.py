@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+
+"""
+Implementation of number conversion to binary and any
+other base.
+"""
+
 from pythonds.basic.stack import Stack
 
 def divideBy2(number):
