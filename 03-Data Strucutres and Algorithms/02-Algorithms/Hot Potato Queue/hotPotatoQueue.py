@@ -1,9 +1,9 @@
-from pythonds.basic.queue import Queue
-
 """
     Program that simulates a hot potato game. 
     Each person is dequeued and enqueued simulating the pass of the 'hot potato'.
 """
+
+from pythonds.basic.queue import Queue
 
 def HotPotato(namelist, repetitions):
     queue = Queue()
