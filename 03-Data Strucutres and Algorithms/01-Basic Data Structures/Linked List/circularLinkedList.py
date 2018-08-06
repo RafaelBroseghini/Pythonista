@@ -58,9 +58,11 @@ class CircularLinkedList():
       self.tail = None
     
     return former_head
-
-
-
+  
+  def rotate(self):
+    if self.size > 0:
+      self.tail = self.tail.next
+      
 
 def main():
   circ_linked_list = CircularLinkedList()
