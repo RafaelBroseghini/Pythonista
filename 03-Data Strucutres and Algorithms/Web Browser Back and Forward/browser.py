@@ -36,7 +36,7 @@ class Browser(object):
 
   def check_back_and_forth(self, url):
     if url == "back" and self.backward.isEmpty():
-      raise Exception("Can't go back to nowhere.")
+      raise Exception("Can't go back to nowhere!")
     elif url == "forward" and self.forward.isEmpty():
       raise Exception("Can't go forward to nowhere.")
   
