@@ -1,5 +1,6 @@
-import random
-class Card:
+class Card(object):
+    conversion_dict = {"T": "10", "J":"Joker", "Q": "Queen", "K": "King"}
+
     def __init__(self, rank, suit):
         if rank in '23456789TJQKA':
             self._rank = rank
@@ -22,12 +23,13 @@ class Card:
         if self._suit == other._suit:
             return '23456789TJQKA'.index(self._rank) > '23456789TJQKA'.index(other._rank)
         if self._rank == other._rank:
-            return ['spades','clubs','diamonds','hearts'].index(self._suit) > ['spades','clubs','diamonds','hearts'].index(self._suit) 
+            return ['spades','clubs','diamonds','hearts'].index(self._suit) > ['spades','clubs','diamonds','hearts'].index(other._suit) 
         
     def __lt__(self, other):
-        card1 = self._suit, self._rank
-        card2 = other._suit, other._rank
-        return card1 < card2      
+      if self._suit == other._suit:
+        return '23456789TJQKA'.index(self._rank) < '23456789TJQKA'.index(other._rank)
+      if self._rank == other._rank:
+        return ['spades','clubs','diamonds','hearts'].index(self._suit) < ['spades','clubs','diamonds','hearts'].index(other._suit) 
     
     def __eq__(self, other):
         if isinstance(other, Card):
@@ -37,5 +39,6 @@ class Card:
                 return False
     
     def __str__(self):
-            return str(self._rank) + ' of ' + str(self._suit)
-       
+      if self._rank in self.conversion_dict:
+        return "{} of {}".format(self.conversion_dict[self._rank], self._suit)
+      return "{} of {}".format(self._rank, self._suit)
