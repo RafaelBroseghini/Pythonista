@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-Implementation of number conversion to binary and any
+Implementation of number conversion to binary or any
 other base.
 """
 
