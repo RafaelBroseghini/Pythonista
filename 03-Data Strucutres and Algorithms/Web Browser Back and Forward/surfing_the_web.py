@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 This python script imitates how
-the 'back' and 'forward' buttons
+the 'back' and 'forward' functionality
 in a Web Browser work.
 
 Using two stacks, one is able to
