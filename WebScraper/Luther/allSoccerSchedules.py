@@ -30,7 +30,6 @@ for year in all_years:
     past = session.post(URL, data={"season":year["value"]}).text
     new_soup = BeautifulSoup(past, "html.parser")
     all_teams = new_soup.find_all("td", class_="event")
-
     for team in all_teams:
         if team.text not in all_games:
             all_games[team.text] = 1
