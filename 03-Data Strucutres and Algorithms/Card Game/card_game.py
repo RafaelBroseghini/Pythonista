@@ -36,6 +36,16 @@ def deal_cards(deck, players):
     for player in players:
       player.draw(deck)
 
+def get_winner(score_board):
+  winner_name = ""
+  winner_score = 0
+  for player in score_board:
+    if score_board[player] > winner_score:
+      winner_score = score_board[player]
+      winner_name = player
+  
+  return winner_name
+
 def game(deck, players = [Player("John Doe"), Player("Ada Lovelace")]):
   score = {str(name):0 for name in players}
   check_game_cap(players)
@@ -55,18 +65,18 @@ def game(deck, players = [Player("John Doe"), Player("Ada Lovelace")]):
     if len(deck) == 0:
       if all_empty_hands(players):
         #check_all_hands and length of deck.
-        return score
+        return get_winner(score)
 
     if len(deck) > 0:
       for player in players:
         player.draw(deck)
 
-  return max(score)
+  return "Tie"
 
 def main():
   deck = set_up()
   final_score = game(deck)
-  print(final_score)
+  print("And the winner is: ", final_score)
 
 if __name__ == "__main__":
   main()
