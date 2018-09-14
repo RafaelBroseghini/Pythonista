@@ -1,0 +1,6 @@
+def reverse(lst):
+    if len(lst) == 0:
+        return lst
+    return reverse(lst[1:]) + [lst[0]]
+
+print(reverse([1,2,3,4,5]))
