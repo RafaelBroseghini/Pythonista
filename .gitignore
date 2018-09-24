@@ -26,9 +26,11 @@ pip-log.txt
 
 #Mr Developer
 venv
+.mypy*
 *.pyc
 build
 
 #Project Euler
 Project_Euler/
 Random-Problems/
+.vscode/

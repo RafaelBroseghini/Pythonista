@@ -70,7 +70,7 @@ def MorseTree():
             cur.setRootVal(key)
         return Tree
     
-def decode(message):
+def decode(message: str) -> list:
     x = message.split(' ')
     mylist = []
     for letter in x:
@@ -85,7 +85,7 @@ def decode(message):
     newlist = newlist.replace(',','')
     return newlist
 
-def encode(message):
+def encode(message: str) -> str:
     output = ''
     message = message.split(' ')
     for word in message:
@@ -95,7 +95,7 @@ def encode(message):
         
         
         
-def findpath(mytree, letter, path):
+def findpath(mytree: MorseTree, letter: str, path: str) -> str:
     if not mytree:
         return False
     elif mytree.getRootVal() == letter:

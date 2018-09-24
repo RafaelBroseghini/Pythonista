@@ -7,7 +7,7 @@ other base.
 
 from pythonds.basic.stack import Stack
 
-def divideBy2(number):
+def divideBy2(number: int) -> int:
     stack = Stack()
     while number > 0:
         remainder = number%2
@@ -20,7 +20,7 @@ def divideBy2(number):
 
     return res
 
-def anyBaseConversion(number,base):
+def anyBaseConversion(number: int,base: int) -> str:
     digits = "0123456789ABCDEF"
     stack = Stack()
     while number > 0:

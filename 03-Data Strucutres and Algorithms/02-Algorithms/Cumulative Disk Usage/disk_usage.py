@@ -13,7 +13,7 @@ Depth First Search.
 Recursive.
 """
 
-def get_size_dir_bfs(pwd):
+def get_size_dir_bfs(pwd: str) -> int:
     queue = []
     queue.insert(0, pwd)
     
@@ -31,7 +31,7 @@ def get_size_dir_bfs(pwd):
     return total
 
 
-def get_size_dir_dfs(pwd):
+def get_size_dir_dfs(pwd: str) -> int:
     stack = []
 
     stack.append(pwd)
@@ -49,7 +49,7 @@ def get_size_dir_dfs(pwd):
     return total
 
 # Recursive implementation.
-def get_size_dir_recursive(pwd):
+def get_size_dir_recursive(pwd: str) -> int:
     total = os.path.getsize(pwd)
 
     if os.path.isdir(pwd):
@@ -65,6 +65,5 @@ def main():
     print("Breadth First Search cumulative disk usage size of {} is: {} bytes".format(inp, get_size_dir_bfs(inp)))
     print("Depth First Search cumulative disk usage size of {} is: {} bytes".format(inp, get_size_dir_dfs(inp)))
     print("Recursive cumulative disk usage size of {} is: {} bytes".format(inp, get_size_dir_recursive(inp)))
-
 if __name__ == '__main__':
     main()

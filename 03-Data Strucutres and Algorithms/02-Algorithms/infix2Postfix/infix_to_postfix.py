@@ -7,7 +7,7 @@ to postfix notation using a stack.
 
 from pythonds.basic.stack import Stack
 
-def convert(expression):
+def convert(expression: str) -> str:
     expression = list(expression)
     output = []
     opstack = Stack()

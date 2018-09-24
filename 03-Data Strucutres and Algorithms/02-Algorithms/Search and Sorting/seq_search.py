@@ -5,8 +5,11 @@ Implementation of sequential search on both
 ordered and unordered arrays.
 """
 
+from typing import Union, Sequence
 
-def seq_search(arr,elem):
+TARGETS = Union[str, int, float]
+
+def seq_search(arr: Sequence[TARGETS], elem: TARGETS) -> bool:
     '''
     Unordered Array
     Time Complexity: O(n)
@@ -22,7 +25,7 @@ def seq_search(arr,elem):
 
 
 
-def seq_search_ordered(arr,elem):
+def seq_search_ordered(arr: Sequence[TARGETS], elem: TARGETS) -> bool:
     '''
     Ordered Array
     Time Complexity: O(n)

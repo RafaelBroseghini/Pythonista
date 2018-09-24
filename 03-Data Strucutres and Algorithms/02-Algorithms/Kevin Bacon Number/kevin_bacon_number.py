@@ -10,7 +10,7 @@ import sys
 from graph import Graph
 from vertex import Vertex
 
-def build_graph(filename):
+def build_graph(filename: str) -> dict:
   g = Graph()
   movie_dict = {}
 
@@ -34,7 +34,7 @@ def build_graph(filename):
 
   return g
 
-def bfs(graph, start):
+def bfs(graph: dict, start: str) -> None:
   graph[start].setPred("No one")
   queue = [start]
   while len(queue) > 0:
@@ -45,19 +45,19 @@ def bfs(graph, start):
         graph[item].setPred(current)
         queue.insert(0, item)
     
-def traverse(graph, x, goal):
+def traverse(graph: dict, dest: str, source: str) -> list:
   path = []
   dis = 0
-  path.append(x)
-  while graph[x].getPred() != None:
-    pred = graph[x].getPred()
+  path.append(dest)
+  while graph[dest].getPred() != None:
+    pred = graph[dest].getPred()
     path.append(pred)
-    x = graph[x].getPred()
+    dest = graph[dest].getPred()
     dis += 1
 
-    if x == goal:
+    if dest == source:
       return path
-  return "Oops, no Kevin Bacon number for {}".format(x)
+  return "Oops, no Kevin Bacon number for {}".format(dest)
 
 
 GRAPH = build_graph("movies.txt")

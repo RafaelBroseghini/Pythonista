@@ -33,7 +33,7 @@ def read_expressions():
             expr_list.append(line)
         return expr_list
 
-def evaluate_expr(expr):
+def evaluate_expr(expr: str) -> str:
     if len(expr.split()) % 2 != 0:
         raise IndexError('Too few/many operands in the expression.')
 
@@ -42,7 +42,7 @@ def evaluate_expr(expr):
 
     return expr
 
-def rpn_calc(expression, s):
+def rpn_calc(expression: str, s: Stack) -> int:
     for token in expression.split():
 
         """ '=' never gets pushed into the stack. 
@@ -68,7 +68,7 @@ def rpn_calc(expression, s):
         elif token == '=':
             result = s.pop()
             if s.isEmpty():
-                return "{}in rpn =: {}\n".format(expression[:len(expression)-1],int(result))
+                return int(result)
             else:
                 raise Warning("Stack is not empty even though there are even amount of tokens in it.")
         else:
@@ -78,7 +78,7 @@ def main():
     s = Stack()
     all_expr = read_expressions()
     for expression in all_expr:
-        print(rpn_calc(evaluate_expr(expression), s))
+        print(expression, rpn_calc(evaluate_expr(expression), s))
 
 if __name__ == '__main__':
     main()

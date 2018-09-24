@@ -25,7 +25,7 @@ class Deque:
     def size(self):
         return len(self.items)
 
-def palchecker(aString):
+def palchecker(aString: str) -> bool:
     chardeque = Deque()
     new_String= aString.replace(' ','')
 
