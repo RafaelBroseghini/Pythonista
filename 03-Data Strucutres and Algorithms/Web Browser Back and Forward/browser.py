@@ -19,33 +19,33 @@ class Browser(object):
     self._forward  = Stack()
 
   @property
-  def backward(self):
+  def backward(self) -> Stack:
     return self._backward
   
   @property
-  def forward(self):
+  def forward(self) -> Stack:
     return self._forward
 
   @property
-  def current_url(self):
+  def current_url(self) -> str:
     return self._current_url
 
   @current_url.setter
-  def current_url(self, new_url):
+  def current_url(self, new_url: str) -> str:
     self._current_url = new_url
 
-  def check_back_and_forth(self, url):
+  def check_back_and_forth(self, url: str) -> None:
     if url == "back" and self.backward.isEmpty():
       raise Exception("Can't go back to nowhere!")
     elif url == "forward" and self.forward.isEmpty():
       raise Exception("Can't go forward to nowhere.")
   
-  def go_back(self):
+  def go_back(self) -> None:
     self.forward.push(self.current_url)
     previous = self.backward.pop()
     self.current_url = previous
   
-  def go_forward(self):
+  def go_forward(self) -> None:
     self.backward.push(self.current_url)
     forward = self.forward.pop()
     self.current_url = forward

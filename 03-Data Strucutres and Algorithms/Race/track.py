@@ -5,14 +5,14 @@ class Track(object):
         self._winner = None
     
     @property
-    def total_distance(self):
+    def total_distance(self) -> int:
         return total_distance
 
     @property
-    def winner(self):
+    def winner(self) -> str:
         return self._winner
 
-    def check_winner(self, contestant):
+    def check_winner(self, contestant: Car) -> bool:
         if not isinstance(contestant, Car):
             raise Exception("Only cars can race.")
         

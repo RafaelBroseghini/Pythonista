@@ -27,7 +27,7 @@ class FileConcatenator(object):
         """
         self.file_list = os.listdir(self.PATH)
 
-    def get_files_with_extension(self, extension=sys.argv[1]):
+    def get_files_with_extension(self, extension=sys.argv[1]) -> list:
         """
         Gets all files from current path with specified
         extension. If no extension is provided, returns
@@ -46,7 +46,7 @@ class FileConcatenator(object):
 
         return result
 
-    def write_to_master_file(self, all_files=[], filename=sys.argv[2], separator=sys.argv[3]):
+    def write_to_master_file(self, all_files=[], filename=sys.argv[2], separator=sys.argv[3]) -> None:
         """
         Writes content of all found files with extension
         to a single source name passed as command line argument

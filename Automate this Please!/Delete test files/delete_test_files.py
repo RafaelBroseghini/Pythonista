@@ -31,7 +31,7 @@ class TestFileEraser(object):
         self.all_files = os.listdir(self.PATH)
 
 
-    def get_test_files(self, extension=sys.argv[1]):
+    def get_test_files(self, extension=sys.argv[1]) -> list:
         """
         Returns array with files starting with 'test'.
         If extension is specified, only files with that
@@ -47,7 +47,7 @@ class TestFileEraser(object):
         return result
 
 
-    def delete_test_files(self, files_list=[]):
+    def delete_test_files(self, files_list=[]) -> None:
         """
         Deletes all 'test' files passed in files_list
         parameter.

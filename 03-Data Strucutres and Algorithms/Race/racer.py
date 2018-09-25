@@ -2,7 +2,7 @@ from track import Track
 from car import Car
 
 
-def lets_race(drivers=[Car("Rarri"), Car("Tesla")]):
+def lets_race(drivers=[Car("Rarri"), Car("Tesla")]) -> str:
     t = Track()
     done = False
     while not done:

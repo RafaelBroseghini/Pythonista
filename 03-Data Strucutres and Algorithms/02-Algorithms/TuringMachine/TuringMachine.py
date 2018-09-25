@@ -1,14 +1,9 @@
 '''
 Name: Rafael Lopes Broseghini
-Prof: Dr. Kent Lee
-
-Date: 11/16/2017
-Course: CS-260
 Purpose: Create Turing machine that reverses a string of any amount of'r','e','v',s'
 '''
 
 import unittest
-
 
 class TuringMachine:
     def __init__(self,startState = 0, delta = {}, finalStates = set()):
@@ -17,7 +12,7 @@ class TuringMachine:
         self.finalStates = finalStates
         
         
-    def run_machine(self, inputString):
+    def run_machine(self, inputString: str) -> str:
         
         tape = Tape(inputString)
         
@@ -72,30 +67,30 @@ class Tape:
         self.contents = [' ' for item in range(50)]+list(inputRead)+[' ' for item in range(50)]
         self.tapeReadPos = 50
         
-    def read(self):
+    def read(self) -> str:
         return self.contents[self.tapeReadPos]
     
-    def write(self, ch):
+    def write(self, ch: str) -> str:
         self.contents[self.tapeReadPos] = ch
         
-    def move_right(self):
+    def move_right(self) -> None:
         self.tapeReadPos += 1
         if self.tapeReadPos == len(self.contents):
             for item in range(len(self.contents)):
                 self.contents.append(' ')
                 
-    def move_left(self):
+    def move_left(self) -> None:
         self.tapeReadPos -= 1
         if self.tapeReadPos == -1:
             self.contents =  [' ' for item in range(len(self.contents))] + self.contents 
             self.tapeReadPos = len(self.contents)//2 - 1
     
     # Not move. Only accessed when reaches a final state.
-    def not_move(self):
+    def not_move(self) -> None:
         self.tapeReadPos = self.tapeReadPos
            
         
-    def __str__(self):
+    def __str__(self) -> str:
         tape = ''.join(self.contents).strip()
         return '|{}|'.format('|'.join(list(tape)))
 
