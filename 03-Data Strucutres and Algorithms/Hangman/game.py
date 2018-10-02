@@ -11,14 +11,14 @@ class Hangman(object):
 
 
     def read_from_file(self,b,t):
-      with open("english.txt","r") as file:
+      with open("pt-br.txt","r") as file:
           pattern = re.compile(r"\n")
           lst = file.readlines()
           for word in range(len(lst)):
               lst[word] = re.sub(pattern,"",lst[word])
               if len(lst[word]) >= b and len(lst[word]) <= t:
                   self.words.append(lst[word])
-    
+
     def ask_for_input(self):
       """
         Ask user for input. Validate it.
@@ -46,7 +46,7 @@ class Hangman(object):
       sub = re.sub(r".","_",word)
       return list(sub)
 
-    
+
     def letter_has_been_used(self, letter):
       """
         Check if letter has already been used.
@@ -55,7 +55,7 @@ class Hangman(object):
           if self.used_letters[i] == letter:
               return True
       return False
-    
+
     def right_guess(self, word, hidden_word, letter):
       """
         Check if guess is in word.
@@ -91,7 +91,7 @@ class Hangman(object):
               inp = self.ask_for_input()
           self.used_letters.append(inp)
           print("Used letters: {}\n".format(sorted(self.used_letters)))
-          
+
           if self.right_guess(chosen_word,hidden_word,inp):
               announcer.right_guess_feedback(inp,hidden_word)
           else:
@@ -103,4 +103,3 @@ class Hangman(object):
               won = True
           elif announcer.tries == 0:
               announcer.game_over_lost(chosen_word)
-
