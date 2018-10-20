@@ -1,6 +1,6 @@
 # Notes on Algorithmic Complexity Analysis
 1. A Data Structure refers to a **systematic way of organizing data**.
-2. An algorithm refers to the step by step procedure for perfoming a task in finite time.
+2. An algorithm **refers to the step by step procedure for perfoming a task in finite time.**
 
 ### First of all, why should we care?
 1. Being able to measure an algorithm's efficiency (asymptotically) regardless of the hardware/software it runs in,
