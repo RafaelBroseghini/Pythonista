@@ -11,14 +11,14 @@ class Hangman(object):
         self.tries = tries
         self.used_letters = used_letters
 
-    def read_from_file(self, b, t):
-        with open("pt-br.txt", "r") as file:
+    def read_from_file(self, b, t, lang):
+        with open(lang, "r") as file:
             pattern = re.compile(r"\n")
             lst = file.readlines()
             for word in range(len(lst)):
                 lst[word] = re.sub(pattern, "", lst[word])
                 if len(lst[word]) >= b and len(lst[word]) <= t:
-                    self.words.append(lst[word])
+                    self.words.append(lst[word].lower())
 
     def ask_for_input(self):
         """Ask user for input. Validate it."""
@@ -64,8 +64,12 @@ class Hangman(object):
         """Playing the game."""
         announcer = Announcer()
         diff = announcer.display_supported_difficulties()
+        lang = announcer.ask_for_language()
+
         self.read_from_file(announcer.difficulty[diff][1][0],
-                            announcer.difficulty[diff][1][1])
+                            announcer.difficulty[diff][1][1],
+                            lang)
+
         chosen_word = self.choose_word()
         hidden_word = self.hidden_word(chosen_word)
         won = False
@@ -91,3 +95,4 @@ class Hangman(object):
                 won = True
             elif announcer.tries == 0:
                 announcer.game_over_lost(chosen_word)
+                exit()
