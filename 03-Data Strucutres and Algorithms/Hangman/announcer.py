@@ -1,3 +1,4 @@
+import os
 import re
 import random
 import string
@@ -32,6 +33,18 @@ class Announcer(object):
     while inp not in alphabet:
             print("{} is not supported in this game. Try again!".format(inp))
             inp = input("Letter: ")
+
+    return inp
+
+  def ask_for_language(self):
+    langs = [file for file in os.listdir("./") if file.endswith(".txt")]
+    print("\nChoose a language:")
+    for l in range(len(langs)):
+        print("{}) {:<15}".format(l+1, langs[l]))
+    inp = input("\nLanguage: ")
+    while inp not in langs:
+        print("{} is not supported in this game. Try again!".format(inp))
+        inp = input("Try Again. Language: ")
 
     return inp
   
