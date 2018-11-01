@@ -8,6 +8,6 @@ repetitive stuff that I have come across since I started programming.
 * [File concatenation](https://github.com/RafaelBroseghini/Pythonista/tree/master/Automate%20this%20Please!/File%20Concatenation)
 
 ## Contribute:
-* Open an issue with an automation idea! :+1:
+* Open an issue with an automation fix! :+1:
 * **OR**
 * Make a PR with an automation idea! :+1:
