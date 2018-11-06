@@ -3,7 +3,7 @@
 * **Leisure time practice as well :thumbsup:**
 * **Overarching Topic: Data Structures & Algorithms**
   * *Object Oriented Programming.*
-  * *Algorithm Analysis O(n)*
+  * *Algorithm Analysis Big-O*
   * *Recursion*
   * *Linear Search; Binary Search; Hashing*
   
