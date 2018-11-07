@@ -9,7 +9,7 @@ class Stack(object):
         
     # pop element from the stack.
     def pop(self):
-        self.items.pop()
+        return self.items.pop()
         
     # peek element at top of the stack. Will throw error if empty.
     def peek(self):
