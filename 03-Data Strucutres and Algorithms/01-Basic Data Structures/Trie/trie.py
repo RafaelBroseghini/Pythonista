@@ -1,39 +1,6 @@
 class Trie(object):
-    """Membership Data Structure"""
-    def __insert(node, item):
-        if len(item) == 0:
-            return None
-        elif node == None:
-            node = Trie.TrieNode(item[0])
-
-        if node.item == item[0]:
-            if node.follows == None:
-                if item == "$":
-                    Trie.__insert(None, "")
-                else:
-                    node.setFollows(Trie.__insert(Trie.TrieNode(item[1]), item[1:]))
-            else:
-                Trie.__insert(node.follows, item[1:])
-        else:
-            if node.next == None:
-                node.setNext(Trie.__insert(Trie.TrieNode(item[0]), item))
-            else:
-                Trie.__insert(node.next, item)
-
-        return node
-    
-    def __contains(node, item):
-        if len(item) == 0:
-            return True
-        elif node == None:
-            return False
-        
-        if node.item == item[0]:
-            return Trie.__contains(node.follows, item[1:])
-        else:
-            return Trie.__contains(node.next, item)
-
-    class TrieNode(object):
+    """reTRIEval Membership Data Structure"""
+    class __TrieNode(object):
         def __init__(self, item, next=None, follows=None):
             self.item = item
             self.next = next
@@ -44,7 +11,13 @@ class Trie(object):
 
         def setNext(self, newNext):
             self.next = newNext
-    
+
+        def getFollows(self):
+            return self.follows
+
+        def getNext(self):
+            return self.next
+
     def __init__(self):
         self.start = None
     
@@ -55,6 +28,32 @@ class Trie(object):
     def __contains__(self, item):
         item += "$"
         return Trie.__contains(self.start, item)
+
+    def __insert(node, item):
+        if len(item) == 0:
+            return node
+        
+        if node == None:
+            node = Trie.__TrieNode(item[0])
+
+        if node.item == item[0]:
+            node.setFollows(Trie.__insert(node.getFollows(), item[1:]))
+        else:
+            node.setNext(Trie.__insert(node.getNext(), item))
+
+        return node
+    
+    def __contains(node, item):
+        if len(item) == 0:
+            return True
+        
+        if node == None:
+            return False
+
+        if node.item == item[0]:
+            return Trie.__contains(node.follows, item[1:])
+        else:
+            return Trie.__contains(node.next, item)
 
 
 def main():
