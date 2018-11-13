@@ -55,6 +55,30 @@ class Trie(object):
         else:
             return Trie.__contains(node.next, item)
 
+    def suggest(self, item):
+      if item in self:
+        return None
+
+      item += "$"
+      return Trie.__suggestions(self.start, item)
+
+    def __suggestions(node, item, word="", parent=None):
+      if node == None:
+        current = parent 
+        while current.follows.item != "$":
+          word += current.follows.item
+          current = current.follows
+
+      elif node.item == item[0]:
+        parent = node
+        word += node.item
+        return Trie.__suggestions(node.follows, item[1:], word, parent)
+    
+      else:
+        return Trie.__suggestions(node.next, item, word, parent)
+      
+      return word
+
 
 def main():
     t = Trie()
@@ -76,42 +100,7 @@ def main():
     assert "dog" in t
     assert "luther" not in t
     
-    # print(t.start.item)
-    # print(t.start.follows.item)
-    # print(t.start.follows.follows.item)
-    # print(t.start.follows.follows.follows.item)
-    # print()
-    # test
-    # print(t.start.item)
-    # print(t.start.follows.item)
-    # print(t.start.follows.follows.item)
-    # print(t.start.follows.follows.follows.item)
-    # print(t.start.follows.follows.follows.next.item)
-    # # print(t.start.follows.follows.follows.next.follows.item)
-    # print()
-    # print(t.start.item)
-    # print(t.start.follows.item)
-    # print(t.start.follows.next.item)
-    # print(t.start.follows.next.follows.item)
-    # print(t.start.follows.next.follows.follows.item)
-    # print()
-    # print(t.start.item)
-    # print(t.start.next.item)
-    # print(t.start.next.follows.item)
-    # print(t.start.next.follows.follows.item)
-    # print(t.start.next.follows.follows.next.item)
-    # print(t.start.next.follows.follows.next.follows.item)
-    # print(t.start.next.follows.follows.next.follows.follows.item)
-    # print(t.start.next.follows.follows.next.follows.follows.follows.item)
-    # print(t.start.next.follows.follows.next.follows.follows.follows.follows.item)
-    # print()
-    # print(t.start.item)
-    # print(t.start.next.item)
-    # print(t.start.next.next.item)
-    # print(t.start.next.next.follows.item)
-    # print(t.start.next.next.follows.follows.item)
-    # print(t.start.next.next.follows.follows.follows.item)
-    # print()
+    print(t.suggest("ca"))
 
 if __name__ == '__main__':
     main()
