@@ -1,6 +1,6 @@
 '''
 Name: Rafael Lopes Broseghini
-Purpose: Create Turing machine that reverses a string of any amount of'r','e','v',s'
+Purpose: Create Turing machine that reverses a string of only 'r','e','v',s' characters.
 '''
 
 import unittest
