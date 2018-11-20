@@ -1,17 +1,18 @@
-import os
-
 """
 Script to get cumulative disk usage size 
 in bytes of path passed in as argument 
 and all its children.
 
 I originally did this with three different 
-implementations.
-
-Breadth First Search.
-Depth First Search.
-Recursive.
+implementations:
+    Breadth First Search.
+    Depth First Search.
+    Recursive.
 """
+
+import os
+
+__author__ = "Rafael Broseghini"
 
 def get_size_dir_bfs(pwd: str) -> int:
     queue = []
