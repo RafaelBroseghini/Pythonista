@@ -48,3 +48,4 @@ Example: log2(12) = (12/2)/2)/2)/2) = (0.75 <= 1) log2(12) = 4
     * O(N) + O(logN) + 5 = O(N)
 * **Describe in the simplest terms.**
 * **Be aware of space complexity as well. It is common to trade time for space when designing an algorithm.**
+  * Hash Tables!
