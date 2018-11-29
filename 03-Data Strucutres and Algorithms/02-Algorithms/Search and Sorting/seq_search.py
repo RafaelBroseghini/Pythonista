@@ -14,8 +14,7 @@ def seq_search(arr: Sequence[TARGETS], elem: TARGETS) -> bool:
     Unordered Array
     Time Complexity: O(n)
     '''
-    pos = 0
-    found = False
+    pos, found = 0, False
     # Will iterate until found or end of array.
     while pos < len(arr) and not found:
         if arr[pos] == elem:
@@ -30,9 +29,7 @@ def seq_search_ordered(arr: Sequence[TARGETS], elem: TARGETS) -> bool:
     Ordered Array
     Time Complexity: O(n)
     ''' 
-    pos = 0
-    found = False
-    stopped = False
+    pos, found, stopped = 0, False, False
 
     while pos < len(arr) and not stopped:
         # Will break out of the loop if current elem > parameter passed.
