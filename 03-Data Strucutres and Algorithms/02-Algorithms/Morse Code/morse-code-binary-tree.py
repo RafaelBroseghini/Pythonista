@@ -1,10 +1,12 @@
-'''
-Name: Rafael Broseghini
-Prof: Roman Yasinovskyy
+#!/usr/bin/env python3
 
-Filename: MorseCodeBinaryTree.py
-Date: 04/25/2017
-'''
+"""
+Python implementation of Morse code encoder
+and decoder.
+"""
+
+__author__ = "Rafael Broseghini"
+
 class BinaryTree:
     def __init__(self, rootObj):
         self.key = rootObj
@@ -109,5 +111,7 @@ def main():
     print('My message in morse code to you is:', decode('--. .. ...- . ..--.- -- . ..--.- .- -. ..--.- .- ..--\
     .- ..-. --- .-. ..--.- - .... .. ... ..--.- -.-. .-.. .- ... ...', morse_code_tree))
     print('Translating "Simple is better than complex" to morse code:', encode('Simple is better than complex', morse_code_tree))
-main()
+
+if __name__ == "__main__":
+    main()
 
