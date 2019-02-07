@@ -10,8 +10,8 @@ put every team into a dictionary keeping
 a count for repeated matches.
 """
 
-from collections import Counter
 import requests
+from collections import Counter
 from bs4 import BeautifulSoup
 
 
