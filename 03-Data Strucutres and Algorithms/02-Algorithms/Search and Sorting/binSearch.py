@@ -44,12 +44,12 @@ def rec_bin_search(arr: List[int], start: int, end: int, elem: int) -> bool:
 def main():
     arr = [1,2,3,4,5,6,7,8]
     print("Using Sequential Binary Search: \n")
-    print("Looking for elem {} in {}: {}".format(9,arr,binSearch(arr,7)))
-    print("Looking for elem {} in {}: {}".format(3,arr,binSearch(arr,13)))
+    print("Looking for elem {} in {}: {}".format(7,arr,binSearch(arr,7)))
+    print("Looking for elem {} in {}: {}".format(13,arr,binSearch(arr,13)))
 
     print("\nUsing Recursive Binary Search: \n")
-    print("Looking for elem {} in {}: {}".format(9,arr,rec_bin_search(arr, 0, len(arr)-1,7)))
-    print("Looking for elem {} in {}: {}".format(3,arr,rec_bin_search(arr, 0, len(arr)-1, 13)))
+    print("Looking for elem {} in {}: {}".format(7,arr,rec_bin_search(arr, 0, len(arr)-1,7)))
+    print("Looking for elem {} in {}: {}".format(13,arr,rec_bin_search(arr, 0, len(arr)-1, 13)))
 
 if __name__ == "__main__":
     main()
