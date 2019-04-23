@@ -20,7 +20,8 @@ def get_size_dir_bfs(pwd: str) -> int:
     
     total = os.path.getsize(pwd)
     while len(queue) > 0:
-        curr_path, list_dir = queue.pop(), os.listdir(curr_path)
+        curr_path = queue.pop()
+        list_dir = os.listdir(curr_path)
 
         for p in list_dir:
             full_path = os.path.join(curr_path, p)
