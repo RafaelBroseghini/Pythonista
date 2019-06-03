@@ -22,10 +22,10 @@ def check_game_cap(arr):
   elif len(arr) > 13:
     raise Exception("Too many players!")
 
-def all_empty_hands(players_array):
-  total = len(players_array)
+def all_empty_hands(players):
+  total = len(players)
 
-  for p in players_array:
+  for p in players:
     if len(p.get_hand()) == 0:
       total -= 1
   
@@ -36,17 +36,18 @@ def deal_cards(deck, players):
     for player in players:
       player.draw(deck)
 
-def get_winner(score_board):
+def get_winner(game):
   winner_name = ""
   winner_score = 0
-  for player in score_board:
-    if score_board[player] > winner_score:
-      winner_score = score_board[player]
+  for player in game:
+    if game[player] > winner_score:
+      winner_score = game[player]
       winner_name = player
   
   return winner_name
 
-def game(deck, players = [Player("John Doe"), Player("Ada Lovelace")]):
+def game(deck, num_players = int(input("Number of players: "))):
+  players = [Player(input("Player name: ")) for i in range(num_players)]
   score = {str(name):0 for name in players}
   check_game_cap(players)
   deal_cards(deck, players)
