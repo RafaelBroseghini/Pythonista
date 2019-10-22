@@ -26,8 +26,9 @@ import heapq
 __author__ = "Rafael Broseghini"
 
 class Item(object):
-    def __init__(self, coord, distance):
+    def __init__(self, coord, distance, previous=None):
         self.coord = coord
+        self.previous = previous
         self.distance = distance
 
     @property
@@ -70,45 +71,70 @@ def get_neighbors(graph: list, coord: list):
 
 def append_neighbors(x: int, y: int, graph: list, array:list):
     if x >= 0 and x <= len(graph)-1 and y >= 0 and y <= len(graph[0])-1:
-        if graph[x][y] != 1 and graph[x][y] != "1":
+        if graph[y][x] != "X":
             array.append([x, y])
 
 def best_first_search(graph, source, goal):
-    visited, unvisited, path = [tuple(source)], [], []
+    visited, unvisited, path = {tuple(source)}, [], []
     heapq.heappush(unvisited,Item(source, 0))
 
     while len(unvisited) > 0:
         curr = heapq.heappop(unvisited)
-        path.append(curr.coord)
+        path.append(curr)
         if curr.coord == goal:
             return path
 
         neighbors = get_neighbors(graph, curr.coord)
+        
         for n in neighbors:
             if tuple(n) not in visited:
-                visited.append(tuple(n))
                 dis = mhd(n, goal)
-                heapq.heappush(unvisited, Item(n, dis))
+                heapq.heappush(unvisited, Item(n, dis, curr.coord))
+                visited.add(tuple(n))
 
     return []
 
-def draw_path(x: int, y: int, source: list, goal: list, path: list, space: list):
-    drawing = [["O" if space[j][i] == 0 else "|" for i in range(x)] for j in range(y)]
+def directions(curr: list, previous: list, dirs: list) -> list:
+    """
+        GET [N, S, E, W] like directions.
+    """
+    if curr[1] == previous[1]:
+        if previous[0] > curr[0]:
+            dirs.append('W')
+        else:
+            dirs.append('E')
+    elif curr[0] == previous[0]:
+        if previous[1] < curr[1]:
+            dirs.append('S')
+        else:
+            dirs.append('N')
+
+    return dirs
+
+
+def get_path(x: int, y: int, source: list, goal: list, path: list, space: list):
+    drawing = [["O" if space[j][i] == " " else "|" for i in range(x)] for j in range(y)]
     x_source, y_source = source[0], source[1]
     x_goal, y_goal = goal[0], goal[1]
-    step = 0
-    for coord in path:
-        x, y = coord[0], coord[1]
-        # drawing[x][y] = f"{step}"
-        # or
-        drawing[x][y] = "X"
-        if space[x][y] != 1:
-            step += 1
-    drawing[x_source][y_source] = "S"
-    drawing[x_goal][y_goal] = "T"
 
-    for line in drawing:
-        print(" ".join(line))
+    d = {tuple(k.coord):k for k in path}
+    curr = d[tuple(goal)]
+
+    dirs = []
+
+    while curr.previous != None:
+        x, y = curr.coord[0], curr.coord[1]
+        drawing[y][x] = " "
+        dirs = directions(curr.coord, curr.previous, dirs)
+        curr = d[tuple(curr.previous)]
+
+    drawing[y_source][x_source] = "A"
+    drawing[y_goal][x_goal] = "B"
+
+    # for line in drawing:
+    #     print(" ".join(line))
+
+    return "".join(dirs[::-1])
 
 def read_search_space(filename: str):
     search_space = []
@@ -126,7 +152,7 @@ def main():
         for line in space:
             print(" ".join(str(x) for x in line))
         print() 
-        draw_path(len(space[0]), len(space), source, target, path, space)
+        get_path(len(space[0]), len(space), source, target, path, space)
 
 
 if __name__ == "__main__":
