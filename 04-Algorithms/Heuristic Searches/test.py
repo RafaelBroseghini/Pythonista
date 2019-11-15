@@ -1,6 +1,7 @@
 import requests
 
-class Node():
+
+class Node:
     """A node class for A* Pathfinding"""
 
     def __init__(self, parent=None, position=None):
@@ -33,7 +34,7 @@ def astar(maze, start, end):
 
     # Loop until you find the end
     while len(open_list) > 0:
-        
+
         print()
         # Get the current node
         current_node = open_list[0]
@@ -54,17 +55,25 @@ def astar(maze, start, end):
             while current is not None:
                 path.append(current.position)
                 current = current.parent
-            return path[::-1] # Return reversed path
+            return path[::-1]  # Return reversed path
 
         # Generate children
         children = []
-        for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0)]: # Adjacent squares
+        for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0)]:  # Adjacent squares
 
             # Get node position
-            node_position = (current_node.position[0] + new_position[0], current_node.position[1] + new_position[1])
+            node_position = (
+                current_node.position[0] + new_position[0],
+                current_node.position[1] + new_position[1],
+            )
 
             # Make sure within range
-            if node_position[0] > (len(maze) - 1) or node_position[0] < 0 or node_position[1] > (len(maze[len(maze)-1]) -1) or node_position[1] < 0:
+            if (
+                node_position[0] > (len(maze) - 1)
+                or node_position[0] < 0
+                or node_position[1] > (len(maze[len(maze) - 1]) - 1)
+                or node_position[1] < 0
+            ):
                 continue
 
             # Make sure walkable terrain
@@ -87,7 +96,9 @@ def astar(maze, start, end):
 
             # Create the f, g, and h values
             child.g = current_node.g + 1
-            child.h = ((child.position[0] - end_node.position[0]) ** 2) + ((child.position[1] - end_node.position[1]) ** 2)
+            child.h = ((child.position[0] - end_node.position[0]) ** 2) + (
+                (child.position[1] - end_node.position[1]) ** 2
+            )
             child.f = child.g + child.h
 
             # Child is already in the open list
@@ -102,12 +113,13 @@ def astar(maze, start, end):
 def build_uri(path: str) -> str:
     return "https://api.noopschallenge.com" + path
 
+
 def main() -> None:
-    data = requests.get(build_uri('/mazebot/random')).json()
+    data = requests.get(build_uri("/mazebot/random")).json()
     # print(data)
-    maze = data['map']
-    
-    source, target = data['startingPosition'], data['endingPosition']
+    maze = data["map"]
+
+    source, target = data["startingPosition"], data["endingPosition"]
 
     res = astar(maze, source, target)
 
@@ -138,5 +150,6 @@ def main() -> None:
     #     else:
     #         finished = True
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

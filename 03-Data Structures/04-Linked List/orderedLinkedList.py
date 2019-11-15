@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self,initdata):
+    def __init__(self, initdata):
         self.data = initdata
         self.next = None
 
@@ -9,18 +9,14 @@ class Node:
     def getNext(self):
         return self.next
 
-    def setData(self,newdata):
+    def setData(self, newdata):
         self.data = newdata
 
-    def setNext(self,newnext):
+    def setNext(self, newnext):
         self.next = newnext
-        
-        
-
 
 
 class OrderedList:
-    
     def __init__(self):
         self._head = None
 
@@ -39,7 +35,7 @@ class OrderedList:
 
         return found
 
-    def add(self,item):
+    def add(self, item):
         current = self._head
         previous = None
         stop = False
@@ -57,8 +53,8 @@ class OrderedList:
         else:
             temp.setNext(current)
             previous.setNext(temp)
-            
-    def remove(self,item):
+
+    def remove(self, item):
         current = self._head
         previous = None
         found = False
@@ -75,7 +71,7 @@ class OrderedList:
             self._head = current.getNext()
         else:
             previous.setNext(current.getNext())
-            
+
     def getItem(self, index):
         current = self._head
         for i in range(index):
@@ -83,8 +79,8 @@ class OrderedList:
         if current != None:
             return current.getData()
         else:
-            raise("Index out of range.")
-        
+            raise ("Index out of range.")
+
     def index(self, item):
         index = 0
         current = self._head
@@ -97,9 +93,13 @@ class OrderedList:
                 current = current.getNext()
                 index += 1
         if not found:
-            print('Value of ' + str(item) +' does not return an index because it is not in this list.')
-        return 'Index of ' + str(item) + ' is: ' + str(index)
-        
+            print(
+                "Value of "
+                + str(item)
+                + " does not return an index because it is not in this list."
+            )
+        return "Index of " + str(item) + " is: " + str(index)
+
     def pop(self, index):
         try:
             if index != -1:
@@ -108,8 +108,8 @@ class OrderedList:
                 index = self.size() - 1
                 self.remove(self.getItem(index))
         except Exception as ie:
-            print('Index out of range for pop method.')
-            
+            print("Index out of range for pop method.")
+
     def isEmpty(self):
         return self._head == None
 
@@ -125,30 +125,31 @@ class OrderedList:
         current = self._head
         for i in range(index):
             current = current.getNext()
- 
+
         if current != None:
             temp = Node(item)
             temp.setNext(current.getNext())
             current.setNext(temp)
         else:
-            raise("Index out of range")
+            raise ("Index out of range")
 
     def append(self, new_node):
         if not self._head:
             self._head = new_node
             return
-        current  = self._head
+        current = self._head
         while current.next:
             current = current.next
         current.next = new_node
-    
+
     def __str__(self):
         all_nodes = []
         current = self._head
         while current:
             all_nodes.append(current.data)
             current = current.next
-        return str(all_nodes)  
+        return str(all_nodes)
+
 
 mylist = OrderedList()
 mylist.add(31)
@@ -163,7 +164,7 @@ except Exception as ie:
     print(ie)
 mylist.insert(0, 2)
 print(mylist)
-print(mylist.index(17)) 
+print(mylist.index(17))
 n = Node(5)
 mylist.append(n)
 print(mylist)

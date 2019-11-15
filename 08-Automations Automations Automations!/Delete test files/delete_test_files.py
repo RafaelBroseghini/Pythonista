@@ -23,13 +23,11 @@ __email__ = "rafaellopesbroseghini@gmail.com"
 __status__ = "Prototype"
 
 
-
 class TestFileEraser(object):
     PATH = os.getcwd()
 
     def __init__(self):
         self.all_files = os.listdir(self.PATH)
-
 
     def get_test_files(self, extension=sys.argv[1]) -> list:
         """
@@ -39,13 +37,12 @@ class TestFileEraser(object):
         """
 
         result = []
-        pattern = "^test"+extension
+        pattern = "^test" + extension
         for file in self.all_files:
-            if re.search(pattern,file) and not os.path.isdir(file):
+            if re.search(pattern, file) and not os.path.isdir(file):
                 result.append(file)
-        
-        return result
 
+        return result
 
     def delete_test_files(self, files_list=[]) -> None:
         """
@@ -56,13 +53,11 @@ class TestFileEraser(object):
             os.remove(file)
 
 
-
 def main():
     t = TestFileEraser()
     test_files = t.get_test_files()
     t.delete_test_files(test_files)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
-
-

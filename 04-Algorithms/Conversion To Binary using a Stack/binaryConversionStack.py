@@ -7,40 +7,43 @@ other base.
 
 from pythonds.basic.stack import Stack
 
+
 def divideBy2(number: int) -> int:
     stack = Stack()
     while number > 0:
-        remainder = number%2
+        remainder = number % 2
         stack.push(remainder)
-        number = number//2
-    
+        number = number // 2
+
     res = ""
     while not stack.isEmpty():
         res += str(stack.pop())
 
     return res
 
-def anyBaseConversion(number: int,base: int) -> str:
+
+def anyBaseConversion(number: int, base: int) -> str:
     digits = "0123456789ABCDEF"
     stack = Stack()
     while number > 0:
-        remainder = number%base
+        remainder = number % base
         stack.push(remainder)
-        number = number//base
-    
+        number = number // base
+
     res = ""
     while not stack.isEmpty():
         res += digits[stack.pop()]
 
     return res
 
+
 def main():
     number = int(input("Number to convert to binary and hexadecimal: "))
     binaryNumber = divideBy2(number)
-    chosenBaseConversion = anyBaseConversion(number,16)
-    print("Base 2:",binaryNumber)
-    print("Hexadecimal:",chosenBaseConversion)
+    chosenBaseConversion = anyBaseConversion(number, 16)
+    print("Base 2:", binaryNumber)
+    print("Hexadecimal:", chosenBaseConversion)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

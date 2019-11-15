@@ -1,5 +1,6 @@
 class Trie(object):
     """reTRIEval Membership Data Structure"""
+
     class __TrieNode(object):
         def __init__(self, item, next=None, follows=None):
             self.item = item
@@ -20,20 +21,21 @@ class Trie(object):
 
     def __init__(self):
         self.start = None
-    
+
     def insert(self, item):
         item += "$"
         self.start = Trie.__insert(self.start, item)
-    
+
     def __contains__(self, item):
         item += "$"
         return Trie.__contains(self.start, item)
 
+    @staticmethod
     def __insert(node, item):
         if len(item) == 0:
             return node
-        
-        if node == None:
+
+        if node is None:
             node = Trie.__TrieNode(item[0])
 
         if node.item == item[0]:
@@ -42,12 +44,12 @@ class Trie(object):
             node.setNext(Trie.__insert(node.getNext(), item))
 
         return node
-    
+
     def __contains(node, item):
         if len(item) == 0:
             return True
-        
-        if node == None:
+
+        if node is None:
             return False
 
         if node.item == item[0]:
@@ -56,28 +58,28 @@ class Trie(object):
             return Trie.__contains(node.next, item)
 
     def suggest(self, item):
-      if item in self:
-        return None
+        if item in self:
+            return None
 
-      item += "$"
-      return Trie.__suggestions(self.start, item)
+        item += "$"
+        return Trie.__suggestions(self.start, item)
 
     def __suggestions(node, item, word="", parent=None):
-      if node == None:
-        current = parent 
-        while current.follows.item != "$":
-          word += current.follows.item
-          current = current.follows
+        if node is None:
+            current = parent
+            while current.follows.item != "$":
+                word += current.follows.item
+                current = current.follows
 
-      elif node.item == item[0]:
-        parent = node
-        word += node.item
-        return Trie.__suggestions(node.follows, item[1:], word, parent)
-    
-      else:
-        return Trie.__suggestions(node.next, item, word, parent)
-      
-      return word
+        elif node.item == item[0]:
+            parent = node
+            word += node.item
+            return Trie.__suggestions(node.follows, item[1:], word, parent)
+
+        else:
+            return Trie.__suggestions(node.next, item, word, parent)
+
+        return word
 
 
 def main():
@@ -99,8 +101,9 @@ def main():
     assert "rabbit" in t
     assert "dog" in t
     assert "luther" not in t
-    
+
     print(t.suggest("ca"))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

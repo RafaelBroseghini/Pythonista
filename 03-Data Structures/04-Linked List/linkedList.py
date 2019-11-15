@@ -1,15 +1,17 @@
 import random
 
+
 class Node(object):
     """docstring for Node."""
+
     def __init__(self, data):
         self.data = data
         self.next = None
 
 
-
 class LinkedList(object):
     """docstring for LinkedList."""
+
     def __init__(self):
         self.head = None
 
@@ -22,7 +24,7 @@ class LinkedList(object):
         item = Node(item)
 
         current = self.head
-        while current.next != None:
+        while current.next is not None:
             current = current.next
         current.next = item
 
@@ -30,7 +32,6 @@ class LinkedList(object):
         current = self.head
         self.head = self.head.next
         return current
-
 
     """
         These methods below are for experimentation purposes.
@@ -42,13 +43,12 @@ class LinkedList(object):
     def size(self):
         current = self.head
         count = 0
-        while current != None:
+        while current is not None:
             count += 1
             current = current.next
         return count
 
     def getMiddleElem(self):
-
         """
             This method depends if size is even or odd. Need consensus.
         """
@@ -59,12 +59,12 @@ class LinkedList(object):
             current = current.next
             i += 1
         return current
-    
+
     def printLinkedList(self):
         current = self.head
 
         print("\nHead is: {}".format(current.data))
-        while current.next != None:
+        while current.next is not None:
             print(current.data, current.next.data)
             current = current.next
         print(current.data, current.next)
@@ -72,21 +72,22 @@ class LinkedList(object):
 
 
 def main():
-    
+
     random.seed(11)
 
     l = LinkedList()
-    for item in range(1,11):
-        l.add2Head(item+random.randint(32,876))
-
+    for item in range(1, 11):
+        l.add2Head(item + random.randint(32, 876))
 
     print("Size: ", l.size())
-    print("Middle Elem:",l.getMiddleElem().data)
+    print("Middle Elem:", l.getMiddleElem().data)
 
     l.printLinkedList()
 
     print("Removed head: {}".format(l.removeFromHead().data))
 
     l.printLinkedList()
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     main()

@@ -1,5 +1,6 @@
 from copy import copy
 
+
 class Jug:
     def __init__(self, max):
         self.max = max
@@ -20,19 +21,21 @@ class Jug:
             to_transfer = other_jug.max - other_jug.jug_volume
             self.jug_volume -= to_transfer
             other_jug.jug_volume += to_transfer
-            
-            
-            
+
+
 class State:
     def __init__(self, jug_a, jug_b):
         self.a = jug_a
         self.b = jug_b
 
     def __eq__(self, other):
-        return self.a.jug_volume == other.a.jug_volume and self.b.jug_volume == other.b.jug_volume
+        return (
+            self.a.jug_volume == other.a.jug_volume
+            and self.b.jug_volume == other.b.jug_volume
+        )
 
     def __str__(self):
-        return '({}, {})'.format(self.a.jug_volume, self.b.jug_volume)
+        return "({}, {})".format(self.a.jug_volume, self.b.jug_volume)
 
     def clone(self, moves, visited_states):
         states = []
@@ -45,40 +48,40 @@ class State:
         return states
 
     # State goal: 2 gallons in the first jug and 0 in the second.
-    
+
     def goal(self):
         return self.a.jug_volume == 2 and self.b.jug_volume == 0
-    
-    
+
+
 def main():
-    
+
     jug_1 = Jug(4)
     jug_2 = Jug(3)
-    
-    
-    # Moves as a dictionary with lambda as optimizer. 
+
+    # Moves as a dictionary with lambda as optimizer.
     moves = {
-        'Empty 1': lambda a, b: a.empty_my_jug(),
-        'Empty 2': lambda a, b: b.empty_my_jug(),
-        'Fill 1': lambda a, b: a.fill_my_jug(),
-        'Fill 2': lambda a, b: b.fill_my_jug(),
-        'Transfer from 1 to 2': lambda a, b: a.transfer_from_jug_to_jug(b),
-        'Transfer from 1 to 2': lambda a, b: b.transfer_from_jug_to_jug(a)
+        "Empty 1": lambda a, b: a.empty_my_jug(),
+        "Empty 2": lambda a, b: b.empty_my_jug(),
+        "Fill 1": lambda a, b: a.fill_my_jug(),
+        "Fill 2": lambda a, b: b.fill_my_jug(),
+        "Transfer from 1 to 2": lambda a, b: a.transfer_from_jug_to_jug(b),
+        "Transfer from 1 to 2": lambda a, b: b.transfer_from_jug_to_jug(a),
     }
 
     start = State(jug_1, jug_2)
     visited = [start]
     path = search(start, moves, visited)
 
-
     print()
-    print('Water Jug Problem: ')
-    print(start, end = ' ')
+    print("Water Jug Problem: ")
+    print(start, end=" ")
     for step in path:
-        print(step, end = ' ')
+        print(step, end=" ")
+
 
 # Recursive function to find path.
- 
+
+
 def search(start_state, moves, visited_states):
     path = []
     if not start_state.goal():
@@ -95,7 +98,6 @@ def search(start_state, moves, visited_states):
                     path.extend(searched_path)
                     break
     return path
-
 
 
 main()

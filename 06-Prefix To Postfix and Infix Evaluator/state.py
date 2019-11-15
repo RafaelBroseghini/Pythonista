@@ -2,7 +2,6 @@ NoTransition = -1
 
 
 class State:
-
     def __init__(self, id, acceptsTokenId=None, transitions={}):
         # An id of -1 is not allowed since that indicates there is
         # no transition on a value.
@@ -27,8 +26,11 @@ class State:
 
     def addTransition(self, onClass, toState):
         if onClass in self.transitions:
-            raise Exception("Duplicate Transition " + str(onClass) +
-                            ". Consider using NFA State instead.")
+            raise Exception(
+                "Duplicate Transition "
+                + str(onClass)
+                + ". Consider using NFA State instead."
+            )
         self.transitions[onClass] = toState
 
     def hasTransition(self, onClass):
@@ -58,24 +60,37 @@ class State:
         self.acceptsTokenId = tokenId
 
     def isAccepting(self):
-        return self.acceptsTokenId != None
+        return self.acceptsTokenId is not None
 
     def getAcceptsTokenId(self):
         return self.acceptsTokenId
 
     def __repr__(self):
-        return "State(" + repr(self.id) + "," + repr(self.acceptsTokenId) + "," + \
-            repr(self.transitions) + ")"
+        return (
+            "State("
+            + repr(self.id)
+            + ","
+            + repr(self.acceptsTokenId)
+            + ","
+            + repr(self.transitions)
+            + ")"
+        )
 
     def __str__(self):
         val = ""
         val = "State " + str(self.id) + "\n"
-        if self.acceptsTokenId != None:
-            val += "    accepts token with identifier: " + \
-                str(self.acceptsTokenId) + "\n"
+        if self.acceptsTokenId is not None:
+            val += (
+                "    accepts token with identifier: " + str(self.acceptsTokenId) + "\n"
+            )
 
         for onClass in self.transitions:
-            val += "    On " + str(onClass) + " Go To " + \
-                str(self.transitions[onClass]) + "\n"
+            val += (
+                "    On "
+                + str(onClass)
+                + " Go To "
+                + str(self.transitions[onClass])
+                + "\n"
+            )
 
         return val

@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
 """
-Calculate the consecutive sum of 
+Calculate the consecutive sum of
 each digit passed in as parameter.
 """
+
 
 def consecutive_sum(number):
     if number // 10 < 1:
@@ -18,5 +19,6 @@ def main():
 
     print("Passed all tests!")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

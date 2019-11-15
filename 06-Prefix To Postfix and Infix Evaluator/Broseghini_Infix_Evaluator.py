@@ -1,11 +1,11 @@
-'''
+"""
 Name: Rafael Broseghini
 Date: 10/23/2017
 
 
 Course: CS 260
 Prof: Dr. Kent Lee
-'''
+"""
 
 
 import sys
@@ -24,7 +24,6 @@ epsilon = "EPSILON"
 
 
 class Operator:
-
     def __init__(self, op):
         self.op = op
 
@@ -43,8 +42,14 @@ class Operator:
 
 
 class NFA:
-
-    def __init__(self, classes={epsilon: orderedcollections.OrderedSet()}, states=orderedcollections.OrderedMap(), keywords=orderedcollections.OrderedMap(), tokens=orderedcollections.OrderedMap(), firstTokenId=-1):
+    def __init__(
+        self,
+        classes={epsilon: orderedcollections.OrderedSet()},
+        states=orderedcollections.OrderedMap(),
+        keywords=orderedcollections.OrderedMap(),
+        tokens=orderedcollections.OrderedMap(),
+        firstTokenId=-1,
+    ):
         self.classes = orderedcollections.OrderedMap(classes)
         self.states = orderedcollections.OrderedMap(states)
         self.numStates = len(states)
@@ -53,7 +58,19 @@ class NFA:
         self.firstTokenId = firstTokenId
 
     def __repr__(self):
-        return ("NFA(" + repr(self.classes) + "," + repr(self.states) + "," + repr(self.keywords) + "," + repr(self.tokens) + "," + repr(self.firstTokenId) + ")")
+        return (
+            "NFA("
+            + repr(self.classes)
+            + ","
+            + repr(self.states)
+            + ","
+            + repr(self.keywords)
+            + ","
+            + repr(self.tokens)
+            + ","
+            + repr(self.firstTokenId)
+            + ")"
+        )
 
     def getFirstTokenId(self):
         return self.firstTokenId
@@ -87,9 +104,9 @@ class NFA:
         #######################################################################
 
         def operate(op, opStack, stateStack):
-            precedence = {'(': 0, '|': 1, '.': 2, '*': 3, ')': 0}
+            precedence = {"(": 0, "|": 1, ".": 2, "*": 3, ")": 0}
 
-            if op == '(':
+            if op == "(":
                 opStack.push(op)
                 return None
             else:
@@ -97,7 +114,7 @@ class NFA:
                 opStack.push(topOp)
                 while precedence[op] <= precedence[topOp]:
                     topOp = opStack.pop()
-                    if topOp == '.':
+                    if topOp == ".":
                         first_operand = stateStack.pop()
                         second_operand = stackStack.pop()
 
@@ -113,7 +130,7 @@ class NFA:
                         q0.addTransition(epsilon, q1)
                         startState.addTransition(epsilon, q0)
                         q1.addTransition(epsilon, finalState)
-                    elif topOp == '|':
+                    elif topOp == "|":
                         first_operand = stateStack.pop()
                         second_operand = stackStack.pop()
                         operandNum3 = stateStack.pop()
@@ -137,10 +154,10 @@ class NFA:
                         startState.addTransition(epsilon, q0)
                         finalState.addTransition(epsilon, q2)
 
-                        stateStack.push((startStateID, finalStateId))                
+                        stateStack.push((startStateID, finalStateId))
 
                         stateStack.push((startStateID, finalStateId))
-                    elif topOp == '*':
+                    elif topOp == "*":
                         first_operand = stateStack.pop()
                         second_operand = stackStack.pop()
 
@@ -159,8 +176,8 @@ class NFA:
                         q1.addTransition(epsilon, finalState)
                         finalState.addTransition(epsilon, startState)
 
-                        stateStack.push((startStateID, finalStateId))                    
-                    elif topOp == '(':
+                        stateStack.push((startStateID, finalStateId))
+                    elif topOp == "(":
                         return None
 
                 opStack.push(op)
@@ -184,13 +201,13 @@ class NFA:
         def evaluateRegExpression(reader):
             opStack = stack.Stack()
             opdStck = stack.Stack()
-            opStack.push('(')
+            opStack.push("(")
 
-            operand_classes = {'(', '|', '.', '*', ')'}
-            precedence = {'(': 0, '|': 1, '.': 2, '*': 3, ')': 0}
+            operand_classes = {"(", "|", ".", "*", ")"}
+            precedence = {"(": 0, "|": 1, ".": 2, "*": 3, ")": 0}
 
-            while not reader.peek(';'):
-                if reader.peek('(' or '|' or '.' or '*' or ')'):
+            while not reader.peek(";"):
+                if reader.peek("(" or "|" or "." or "*" or ")"):
                     token = reader.getToken()
                     operate(token, opStack, opdStck)
                 else:
@@ -203,7 +220,7 @@ class NFA:
                     startState.addTransition(token, finalState)
                     opdStck.push(startStateID)
                     opdStck.push(finalStateId)
-            operate(')', opStack, opdStck)
+            operate(")", opStack, opdStck)
             return startStateID, finalStateId
 
         ####################################################
@@ -218,7 +235,7 @@ class NFA:
         if reader.peek("#CLASSES"):
             # print("Found #CLASSES")
             reader.readUpTo("\n")
-            while (not reader.peek("#")):
+            while not reader.peek("#"):
                 # The "#" marks the beginning of the next section. Either KEYWORDS or TOKENS. KEYWORDS are optional.
                 reader.skipComments()
 
@@ -274,17 +291,17 @@ class NFA:
                             reader.readUpTo(",")
                         else:
                             done = True
-        
-                    #print(className)
-                    #Add the class to the class dictionary
-                    
+
+                    # print(className)
+                    # Add the class to the class dictionary
+
                     self.classes[className] = classSet
 
                     reader.readUpTo(";")
-                    
-        #print("These are the classes")         
-        #print(self.classes)
-        # keyword and token id numbers        
+
+        # print("These are the classes")
+        # print(self.classes)
+        # keyword and token id numbers
         IdNum = 0
         keywordsPresent = False
 
@@ -292,8 +309,8 @@ class NFA:
             reader.readUpTo("#KEYWORDS")
             keywordsPresent = True
             reader.skipComments()
-            while (not reader.peek("#TOKENS")):
-                #IdNum = reader.readInt()
+            while not reader.peek("#TOKENS"):
+                # IdNum = reader.readInt()
                 # reader.readUpTo(":")
                 reader.readUpTo("'")
                 keyword = reader.readUpTo("'")[:-1].strip()
@@ -306,12 +323,16 @@ class NFA:
         reader.skipComments()
         readingFirstToken = True
 
-        while not (reader.peek("#PRODUCTIONS") or reader.peek("#END") or reader.peek("#DEFINITIONS")):
-            #idnum = reader.readInt()
-            #reader.readUpTo(":")            
+        while not (
+            reader.peek("#PRODUCTIONS")
+            or reader.peek("#END")
+            or reader.peek("#DEFINITIONS")
+        ):
+            # idnum = reader.readInt()
+            # reader.readUpTo(":")
             if reader.peek("'"):
                 # Then the token was specified as a string like this:
-                # '>=';                
+                # '>=';
                 reader.readUpTo("'")
                 token = reader.readUpTo("'")[:-1].strip()
                 previousId = newState()
@@ -332,7 +353,8 @@ class NFA:
                 IdNum += 1
                 if readingFirstToken and keywordsPresent:
                     raise Exception(
-                        "First Token must be identifier token for matching keywords!")
+                        "First Token must be identifier token for matching keywords!"
+                    )
 
             else:
                 # The token was specified as a regular expression like this:
@@ -372,8 +394,7 @@ class NFA:
 
         outStream.write("The NFA CREATED FOR THE REGULAR EXPRESSIONS IS:\n\n")
 
-        outStream.write("The start state is: " +
-                        str(self.startStateId) + "\n\n")
+        outStream.write("The start state is: " + str(self.startStateId) + "\n\n")
 
         outStream.write("STATE           ON CLASS         GO TO     ACCEPTS\n")
         outStream.write("-----           --------         -----     -------\n")
@@ -393,8 +414,8 @@ class NFA:
                 toStateIds = trans[onClass]
                 for toStateId in toStateIds:
                     # Fix this error!!
-                    
-                    #outStream.write("%28s     %5d\n" % (onClass, toStateId))
+
+                    # outStream.write("%28s     %5d\n" % (onClass, toStateId))
 
                     outStream.write("\n")
 
@@ -403,7 +424,7 @@ def main():
 
     filename = "jpython.txt"
 
-    instream = open(filename, 'r')
+    instream = open(filename, "r")
 
     nfa = NFA()
     nfa.buildMachine(instream)

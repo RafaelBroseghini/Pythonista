@@ -1,15 +1,15 @@
-'''
+"""
 Purpose: Create a program that determines overall grade and letter grade based on user's input.
 
 Author: Rafael Broseghini
 Date: 04/23/16
 
 Filename: CalculateMyGrade.py
-'''
+"""
 # This creates a main function.
 def main():
     # This assigns the first user input to the variable assignmentScores.
-    assignmentScores = input('Assignment scores (separated by spaces): ')
+    assignmentScores = input("Assignment scores (separated by spaces): ")
     # This splits the first user input stored in assignmentScores into a list.
     joining1 = assignmentScores.split()
     # This transforms each substring of joining1 into a float value and assigns to list1.
@@ -20,28 +20,28 @@ def main():
     list1.remove(list1Min)
 
     # This assigns the second user input to the quizScores variable.
-    quizScores = input('Quiz Scores: ')
+    quizScores = input("Quiz Scores: ")
     # This splits the second user's input stored in quizScores into a list.
     joining2 = quizScores.split()
     # This transforms each substring of joining2 into a float value and assigns to list2.
     list2 = [float(i) for i in joining2]
 
     # This assigns the third user input to the writtenExamScores variable.
-    writtenExamScores = input('Written exam scores: ')
+    writtenExamScores = input("Written exam scores: ")
     # This splits the third user's input stored in writtenExamScores into a list.
     joining3 = writtenExamScores.split()
     # This transforms each substring of joining3 into a float value and assigns to list3.
     list3 = [float(i) for i in joining3]
 
     # This assigns the fourth user input to the labExams variable.
-    labExams = input('Lab exam scores: ')
+    labExams = input("Lab exam scores: ")
     # This splits the fourth user's input stored in labExams into a list.
     joining4 = labExams.split()
     # This transforms each substring of joining4 into a float value and assigns to list4.
     list4 = [float(i) for i in joining4]
 
     # This assigns the fifth user input to the finalExam variable.
-    finalExam = input('Final exam score: ')
+    finalExam = input("Final exam score: ")
     # This splits the fifth user's input stored in finalExam into a list.
     joining5 = finalExam.split()
     # This transforms each substring of joining5 into a float value and assigns to list5.
@@ -55,19 +55,20 @@ def main():
     averaging5 = average(list5)
 
     # This recalls the variables immediately above, multiplies each of them by a different weight and stores each of them in a different variable.
-    weighing1 = averaging1*.25
-    weighing2 = averaging2*.15
-    weighing3 = averaging3*.20
-    weighing4 = averaging4*.20
-    weighing5 = averaging5*.20
+    weighing1 = averaging1 * 0.25
+    weighing2 = averaging2 * 0.15
+    weighing3 = averaging3 * 0.20
+    weighing4 = averaging4 * 0.20
+    weighing5 = averaging5 * 0.20
 
     # This adds all the the variable immediately above together.
     addEverything = weighing1 + weighing2 + weighing3 + weighing4 + weighing5
     print()
 
     # This prints the overall number grade and letter grade.
-    print('Overall grade: {0:.2f}'.format(addEverything, 2))
-    print('Letter grade: ', determineGrade(addEverything))
+    print("Overall grade: {0:.2f}".format(addEverything, 2))
+    print("Letter grade: ", determineGrade(addEverything))
+
 
 # This creates the average function.
 def average(item):
@@ -76,34 +77,35 @@ def average(item):
     # This counts the number of items in the lists.
     counting = len(item)
     # This divides the total sum by the amount of items.
-    result = summing/counting
+    result = summing / counting
     # This returns the average.
     return result
+
 
 # This creates a determineGrade function that calculates the letter grade.
 def determineGrade(grade):
     if grade >= 93:
-        return 'A'
+        return "A"
     elif grade >= 90:
-        return 'A-'
+        return "A-"
     elif grade >= 87:
-        return 'B+'
+        return "B+"
     elif grade >= 83:
-        return 'B'
+        return "B"
     elif grade >= 80:
-        return 'B-'
+        return "B-"
     elif grade >= 77:
-        return 'C+'
-    elif grade  >= 73:
-        return 'C'
+        return "C+"
+    elif grade >= 73:
+        return "C"
     elif grade >= 70:
-        return 'C-'
+        return "C-"
     elif grade >= 67:
-        return 'D+'
+        return "D+"
     elif grade >= 60:
-        return 'D'
+        return "D"
     else:
-        return 'F'
+        return "F"
 
 
 main()

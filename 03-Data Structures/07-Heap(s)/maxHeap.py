@@ -1,5 +1,6 @@
 import unittest
 
+
 class MaxHeap(object):
     def __init__(self):
         self.heapList = []
@@ -9,26 +10,32 @@ class MaxHeap(object):
         self.heapList.append(item)
         self.currentsize += 1
         print("percolating now: ", self.currentsize - 1)
-        self.percUp(self.currentsize-1)
-    
+        self.percUp(self.currentsize - 1)
+
     def percUp(self, i):
-        while i // 2  > 0:
-            if self.heapList[i] > self.heapList[i//2]:
-                self.heapList[i], self.heapList[i//2] = self.heapList[i//2], self.heapList[i]
-            i = i //2
-    
+        while i // 2 > 0:
+            if self.heapList[i] > self.heapList[i // 2]:
+                self.heapList[i], self.heapList[i // 2] = (
+                    self.heapList[i // 2],
+                    self.heapList[i],
+                )
+            i = i // 2
+
     def percDown(self, i):
-        while (i*2) <= self.currentsize:
+        while (i * 2) <= self.currentsize:
             mc = self.maxChild(i)
             if self.heapList[i] < self.heapList[mc]:
-                self.heapList[i], self.heapList[mc] = self.heapList[mc], self.heapList[i]
+                self.heapList[i], self.heapList[mc] = (
+                    self.heapList[mc],
+                    self.heapList[i],
+                )
             i = mc
 
     def maxChild(self, i):
         if i * 2 + 1 > self.currentsize:
             return i * 2 - 1
         else:
-            if self.heapList[i*2] > self.heapList[i*2+1]:
+            if self.heapList[i * 2] > self.heapList[i * 2 + 1]:
                 return i * 2
             else:
                 return i * 2 + 1
@@ -38,7 +45,7 @@ class MaxHeap(object):
         self.currentsize -= 1
         self.percDown(0)
         self.heapList.pop()
-    
+
     def buildHeap(self, array):
         i = len(array) // 2
         self.currentsize = len(array)
@@ -47,6 +54,7 @@ class MaxHeap(object):
         while i >= 0:
             self.percDown(i)
             i -= 1
+
 
 b = MaxHeap()
 
@@ -59,7 +67,6 @@ b.insert(7)
 b.insert(8)
 b.insert(9)
 b.insert(10)
-
 
 
 # lst = [1,2,3,4,5,6,7,100,9,10,12,42,77,55]

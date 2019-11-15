@@ -3,19 +3,20 @@ class ListNode:
         self.val = x
         self.next = None
 
-class Solution():
+
+class Solution:
     def add(self, l: ListNode) -> int:
-        res = ''
+        res = ""
         current = l
-        while current != None:
+        while current is not None:
             res = str(current.val) + res
             current = current.next
         return int(res)
-        
+
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         val = str(self.add(l1) + self.add(l2))
         l3 = ListNode(val[0])
-        
+
         if len(val) > 1:
             for number in val[1:]:
                 temp = ListNode(int(number))
@@ -23,7 +24,6 @@ class Solution():
                 l3 = temp
 
         return l3
-        
 
 
 s = Solution()

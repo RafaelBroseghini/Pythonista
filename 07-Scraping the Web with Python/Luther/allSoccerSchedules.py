@@ -4,7 +4,7 @@
 I am curious as to how many times
 LCMS has played some teams since 2011.
 
-This python script will go into the 
+This python script will go into the
 LCMS page, iterate over the years and
 put every team into a dictionary keeping
 a count for repeated matches.
@@ -27,7 +27,7 @@ all_games = Counter()
 all_years = soup.find("form").find_all("option")
 
 for year in all_years:
-    past = session.post(URL, data={"season":year["value"]}).text
+    past = session.post(URL, data={"season": year["value"]}).text
     new_soup = BeautifulSoup(past, "html.parser")
     all_teams = new_soup.find_all("td", class_="event")
     for team in all_teams:
@@ -39,9 +39,5 @@ for year in all_years:
 with open("LCMS.txt", "w+") as outfile:
     outfile.write("{:<65} {}\n".format("Opponent", "Count"))
     for match in all_games.most_common():
-        #using most_common() method of Counter for sorting.
+        # using most_common() method of Counter for sorting.
         outfile.write("{:<65} {}\n".format(match[0], match[1]))
-
-
-
-

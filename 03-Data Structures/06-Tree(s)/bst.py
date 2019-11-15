@@ -1,10 +1,10 @@
 class TreeNode(object):
     def __init__(self, key, val, left=None, right=None, parent=None):
-        self.key        = key
-        self.payload    = val
-        self.leftChild  = left
+        self.key = key
+        self.payload = val
+        self.leftChild = left
         self.rightChild = right
-        self.parent     = parent
+        self.parent = parent
 
     def hasLeftChild(self):
         return self.leftChild
@@ -30,7 +30,7 @@ class TreeNode(object):
     def hasBothChildren(self):
         return self.leftChild and self.rightChild
 
-    def replaceNodeData(self, key, value, lc,rc):
+    def replaceNodeData(self, key, value, lc, rc):
         self.key = key
         self.payload = value
         self.leftChild = lc
@@ -39,6 +39,7 @@ class TreeNode(object):
             self.leftChild.parent = self
         if self.hasRightChild():
             self.rightChild.parent = self
+
 
 class BinarySearchTree(object):
     def __init__(self):
@@ -51,32 +52,32 @@ class BinarySearchTree(object):
     def __len__(self):
         return self.size
 
-    def put(self,key,val):
+    def put(self, key, val):
         if self.root:
             self._put(key, val, self.root)
         else:
-            self.root = TreeNode(key,val)
+            self.root = TreeNode(key, val)
 
         self.size += 1
 
     def _put(self, key, val, currentNode):
         if key < currentNode.key:
             if currentNode.hasLeftChild():
-                self._put(key,val, currentNode.leftChild)
+                self._put(key, val, currentNode.leftChild)
             else:
-                currentNode.leftChild = TreeNode(key,val,parent=currentNode)
+                currentNode.leftChild = TreeNode(key, val, parent=currentNode)
         else:
             if currentNode.hasRightChild():
-                self._put(key,val,currentNode.rightChild)
+                self._put(key, val, currentNode.rightChild)
             else:
-                currentNode.rightChild = TreeNode(key,val,parent = currentNode)
+                currentNode.rightChild = TreeNode(key, val, parent=currentNode)
 
-    def __setitem__(self,k,v):
-        self.put(k,v)
+    def __setitem__(self, k, v):
+        self.put(k, v)
 
-    def get(self,key):
+    def get(self, key):
         if self.root:
-            res = self._get(key,self.root)
+            res = self._get(key, self.root)
             if res:
                 return res.payload
             else:
@@ -92,7 +93,7 @@ class BinarySearchTree(object):
         else:
             return self._get(key, currentNode.rightChild)
 
-    def __getitem__(self,key):
+    def __getitem__(self, key):
         return self.get(key)
 
     def delete(self, key):
@@ -119,10 +120,10 @@ class BinarySearchTree(object):
             else:
                 currentNode.parent.rightChild = None
         elif currentNode.hasBothChildren():
-                succ = currentNode.findSuccesor()
-                succ.spliceOut()
-                currentNode.key = succ.Key
-                currentNode.payload = succ.payload
+            succ = currentNode.findSuccesor()
+            succ.spliceOut()
+            currentNode.key = succ.Key
+            currentNode.payload = succ.payload
         else:
             if currentNode.hasLeftChild():
                 if currentNode.isLeftChild():
@@ -132,10 +133,12 @@ class BinarySearchTree(object):
                     currentNode.leftChild.parent = currentNode.parent
                     currentNode.parent.rightChild = currentNode.leftChild
                 else:
-                    currentNode.replaceNodeData(currentNode.leftChild.key,
-                                                currentNode.leftChild.payload,
-                                                currentNode.leftChild.leftChild,
-                                                currentNode.leftChild.rightChild)
+                    currentNode.replaceNodeData(
+                        currentNode.leftChild.key,
+                        currentNode.leftChild.payload,
+                        currentNode.leftChild.leftChild,
+                        currentNode.leftChild.rightChild,
+                    )
             else:
 
                 if currentNode.isLeftChild():
@@ -145,36 +148,38 @@ class BinarySearchTree(object):
                     currentNode.rightChild.parent = currentNode.parent
                     currentNode.parent.rightChild = currentNode.rightChild
                 else:
-                    currentNode.replaceNodeData(currentNode.rightChild.key,
-                    currentNode.rightChild.payload,
-                    currentNode.rightChild.leftChild,
-                    currentNode.rightChild.rightChild)
+                    currentNode.replaceNodeData(
+                        currentNode.rightChild.key,
+                        currentNode.rightChild.payload,
+                        currentNode.rightChild.leftChild,
+                        currentNode.rightChild.rightChild,
+                    )
 
         def spliceOut(self):
-                if self.isLeaf():
-                    if self.isLeftChild():
+            if self.isLeaf():
+                if self.isLeftChild():
 
-                        self.parent.leftChild = None
-                    else:
-                        self.parent.rightChild = None
-                elif self.hasAnyChildren():
-                    if self.hasLeftChild():
-
-                        if self.isLeftChild():
-
-                            self.parent.leftChild = self.leftChild
-                        else:
-
-                            self.parent.rightChild = self.leftChild
-                            self.leftChild.parent = self.parent
+                    self.parent.leftChild = None
                 else:
+                    self.parent.rightChild = None
+            elif self.hasAnyChildren():
+                if self.hasLeftChild():
 
                     if self.isLeftChild():
 
-                        self.parent.leftChild = self.rightChild
+                        self.parent.leftChild = self.leftChild
                     else:
-                        self.parent.rightChild = self.rightChild
-                        self.rightChild.parent = self.parent
+
+                        self.parent.rightChild = self.leftChild
+                        self.leftChild.parent = self.parent
+            else:
+
+                if self.isLeftChild():
+
+                    self.parent.leftChild = self.rightChild
+                else:
+                    self.parent.rightChild = self.rightChild
+                    self.rightChild.parent = self.parent
 
         def findSuccesor(self):
             succ = None

@@ -1,5 +1,4 @@
 class NFAState:
-
     def __init__(self, id, acceptsTokenId=None, transitions={}):
         # An id of -1 is not allowed since that indicates there is
         # no transition on a value.
@@ -56,21 +55,29 @@ class NFAState:
         self.acceptsTokenId = tokenId
 
     def isAccepting(self):
-        return self.acceptsTokenId != None
+        return self.acceptsTokenId is not None
 
     def getAcceptsTokenId(self):
         return self.acceptsTokenId
 
     def __repr__(self):
-        return "NFAState(" + repr(self.id) + "," + repr(self.acceptsTokenId) + "," + \
-            repr(self.transitions) + ")"
+        return (
+            "NFAState("
+            + repr(self.id)
+            + ","
+            + repr(self.acceptsTokenId)
+            + ","
+            + repr(self.transitions)
+            + ")"
+        )
 
     def __str__(self):
         val = ""
         val = "NFAState " + str(self.id) + "\n"
-        if self.acceptsTokenId != None:
-            val += "    accepts token with identifier: " + \
-                str(self.acceptsTokenId) + "\n"
+        if self.acceptsTokenId is not None:
+            val += (
+                "    accepts token with identifier: " + str(self.acceptsTokenId) + "\n"
+            )
 
         for onClass in self.transitions:
             for toStateId in self.transitions[onClass]:

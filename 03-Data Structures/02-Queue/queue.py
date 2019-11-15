@@ -1,5 +1,6 @@
 class Queue(object):
     """docstring for Queue."""
+
     def __init__(self):
         self.items = []
 
@@ -13,7 +14,7 @@ class Queue(object):
         return len(self.items) == 0
 
     def size(self):
-        return  len(self.items)
+        return len(self.items)
 
 
 q = Queue()

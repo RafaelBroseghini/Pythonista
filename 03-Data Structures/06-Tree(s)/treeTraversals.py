@@ -1,19 +1,22 @@
 from tree import BinaryTree
 
+
 def inorderTraversal(tree):
-    if tree != None:
+    if tree is not None:
         inorderTraversal(tree.getLeftChild())
         print(tree.getRootVal())
         inorderTraversal(tree.getRightChild())
 
+
 def preOrderTraversal(tree):
-    if tree != None:
+    if tree is not None:
         print(tree.getRootVal())
         preOrderTraversal(tree.getLeftChild())
         preOrderTraversal(tree.getRightChild())
 
+
 def postOrderTraversal(tree):
-    if tree != None:
+    if tree is not None:
         postOrderTraversal(tree.getLeftChild())
         postOrderTraversal(tree.getRightChild())
         print(tree.getRootVal())
@@ -22,7 +25,7 @@ def postOrderTraversal(tree):
 def main():
     b = BinaryTree(1)
     """
-        You can add a for loop here to create as many childs as you want. 
+        You can add a for loop here to create as many childs as you want.
     """
     b.insertLeft(2)
     b.insertRight(3)
@@ -34,5 +37,6 @@ def main():
     print("\nPost Order Traversal: L, R, Root")
     postOrderTraversal(b)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

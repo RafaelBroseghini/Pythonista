@@ -1,7 +1,8 @@
 EOF = 3
 digits = set(list("0123456789"))
 lettersdigitsunderscore = set(
-    list("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"))
+    list("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789")
+)
 letters = set(list("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"))
 ws = set(list(" \t\n\r"))
 badidentifiertoken = 1
@@ -9,7 +10,6 @@ notAChar = 2
 
 
 class StreamReader:
-
     def __init__(self, instream):
         self.instream = instream
         self.nextChars = ""
@@ -30,7 +30,7 @@ class StreamReader:
         if nextChar == "":
             nextChar = chr(EOF)
 
-        elif nextChar == '\n':
+        elif nextChar == "\n":
             self.line += 1
             self.column = 0
 
@@ -55,7 +55,7 @@ class StreamReader:
 
         self.nextChars = ch + self.nextChars
 
-        if ch == '\n':
+        if ch == "\n":
             self.line -= 1
         else:
             self.column -= 1
@@ -82,7 +82,7 @@ class StreamReader:
             if not self.eof():
                 result += c
 
-            if result[-len(delimiter):] == delimiter:
+            if result[-len(delimiter) :] == delimiter:
                 done = True
 
         return result
@@ -109,9 +109,15 @@ class StreamReader:
 
         c = self.readChar()
 
-        if not c in letters:
-            print("Bad identifier token found in source file starting with",
-                  c, "at line", self.line, "and column", self.column)
+        if c not in letters:
+            print(
+                "Bad identifier token found in source file starting with",
+                c,
+                "at line",
+                self.line,
+                "and column",
+                self.column,
+            )
             raise Exception(badidentifiertoken)
 
         while c in lettersdigitsunderscore:

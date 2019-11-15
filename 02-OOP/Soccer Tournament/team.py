@@ -1,5 +1,5 @@
-class Team():
-    def __init__(self, players=[], score = 0):
+class Team:
+    def __init__(self, players=[], score=0):
         self._players = players
         self._score = score
 

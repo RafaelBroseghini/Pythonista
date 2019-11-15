@@ -8,13 +8,14 @@ Implementation of the Word Ladder Algorithm
 using Breadth First Search on a Graph.
 """
 
+
 def buildGraph(g):
     d = {}
     with open("words.txt") as file:
         for word in file:
-            word = word.replace("\n","")
+            word = word.replace("\n", "")
             for i in range(len(word)):
-                bucket = word[:i] + "_" + word[i+1:]
+                bucket = word[:i] + "_" + word[i + 1 :]
                 if bucket not in d:
                     d[bucket] = [word]
                 else:
@@ -24,11 +25,12 @@ def buildGraph(g):
         for word in d[vertex]:
             for word2 in d[vertex]:
                 if word != word2:
-                    g.addEdge(word,word2)
+                    g.addEdge(word, word2)
     return g
 
+
 def BFS(g, start, goal):
-    visited = set() 
+    visited = set()
     queue = [start]
     visited.add(start)
     while len(queue) > 0:
@@ -39,11 +41,12 @@ def BFS(g, start, goal):
                 g[nbr].setDistance(g[currentVert].getDistance() + 1)
                 g[nbr].setPred(g[currentVert])
                 visited.add(nbr)
-                queue.insert(0,nbr)
+                queue.insert(0, nbr)
     return visited
 
+
 def traverse(g, start, goal):
-    bfs = BFS(g,start, goal)
+    bfs = BFS(g, start, goal)
     path = []
     pred = g[goal].getPred()
     if start in bfs and goal in bfs:
@@ -53,11 +56,12 @@ def traverse(g, start, goal):
             pred = pred.getPred()
     return reversed(path)
 
+
 def main():
     GRAPH = Graph()
     g = buildGraph(GRAPH)
     print("Breadth First Search Word Ladder Algorithm!")
-    print("="*43+"\n")
+    print("=" * 43 + "\n")
 
     try:
         a, b = input("Choose word1: "), input("Choose word2: ")
@@ -66,8 +70,12 @@ def main():
         for v in b:
             print(v.id)
     except Exception as err:
-        print("\nERROR: Cannot reach '{}' from start: '{}' based on our words.txt file.".format(b, a))
+        print(
+            "\nERROR: Cannot reach '{}' from start: '{}' based on our words.txt file.".format(
+                b, a
+            )
+        )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

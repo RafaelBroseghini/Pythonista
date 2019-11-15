@@ -1,5 +1,4 @@
 class OrderedMap(dict):
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -8,7 +7,6 @@ class OrderedMap(dict):
 
 
 class OrderedSet(set):
-
     def __init__(self, lst=[]):
         super().__init__(lst)
 
@@ -17,7 +15,6 @@ class OrderedSet(set):
 
 
 class OrderedFrozenSet(frozenset):
-
     def __init__(self, lst=[]):
         self = frozenset(lst)
 

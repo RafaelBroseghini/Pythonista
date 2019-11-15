@@ -1,12 +1,15 @@
 class Node(object):
     """docstring for Node."""
+
     def __init__(self, data):
         self.data = data
         self.next = None
         self.prev = None
 
+
 class DoublyLinkedList(object):
     """docstring for LinkedList."""
+
     def __init__(self):
         self.head = Node(None)
         self.trailer = Node(None)
@@ -29,7 +32,7 @@ class DoublyLinkedList(object):
         current = self.head
         item = Node(item)
 
-        for i in range(0,target+1):
+        for i in range(0, target + 1):
             current = current.next
 
         item.prev = current.prev
@@ -44,7 +47,7 @@ d = DoublyLinkedList()
 d.insert2Head(99)
 d.insert2Head(10)
 
-d.insertAtIndex(1,100)
+d.insertAtIndex(1, 100)
 
 
 print("Header {}".format(d.head.data))

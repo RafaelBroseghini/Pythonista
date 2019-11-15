@@ -5,6 +5,7 @@
 from typing import List
 from pythonds.basic.queue import Queue
 
+
 def HotPotato(namelist: List[str], repetitions: int) -> List[str]:
     queue = Queue()
     for name in namelist:
@@ -18,8 +19,10 @@ def HotPotato(namelist: List[str], repetitions: int) -> List[str]:
 
 
 def main():
-    hotPotato = HotPotato(["Rafael","Mo","Jac","Marcos","Trento"],7)
+    hotPotato = HotPotato(["Rafael", "Mo", "Jac", "Marcos", "Trento"], 7)
     print(hotPotato)
     print(type(hotPotato))
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     main()

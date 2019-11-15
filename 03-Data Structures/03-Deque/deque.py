@@ -1,14 +1,16 @@
-'''
+"""
 ASSUMING LEFT IS TOP. AND RIGHT IS END.
-'''
+"""
+
 
 class Deque(object):
     """docstring for Deque."""
+
     def __init__(self):
         self.items = []
 
     def addFront(self, item):
-        self.items.insert(0,item)
+        self.items.insert(0, item)
 
     def addRear(self, item):
         self.items.append(item)

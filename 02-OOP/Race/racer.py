@@ -13,7 +13,7 @@ def lets_race(drivers=[Car("Rarri"), Car("Tesla")]) -> str:
 
             if t.winner:
                 done = True
-    
+
     return "And the winner is: {}".format(t.winner)
 
 
@@ -21,5 +21,5 @@ def main():
     print(lets_race())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

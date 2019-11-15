@@ -1,5 +1,6 @@
 """Depth First Search, Recursively on a Tree Structure."""
 
+
 class Tree(object):
     class _Node(object):
         def __init__(self, val, left=None, right=None):
@@ -8,19 +9,19 @@ class Tree(object):
             self.right = right
             self.visited = False
             self.parent = None
-        
+
         def getVal(self):
             return self.val
-        
+
         def getParent(self):
             return self.parent
-        
+
         def hasBeenVisited(self):
             return self.visited
 
         def setVisited(self, newVal):
             self.visited = newVal
-        
+
         def setParent(self, newParent):
             if type(newParent) != type(self):
                 raise TypeError("Parent has to be a _Node")
@@ -30,14 +31,14 @@ class Tree(object):
             if self.left != None:
                 for item in self.left.inorder():
                     yield item
-            yield self  
+            yield self
             if self.right != None:
                 for item in self.right.inorder():
                     yield item
 
         def __str__(self):
             return str(self.val)
-    
+
         def __iter__(self):
             return self.inorder()
 
@@ -47,7 +48,7 @@ class Tree(object):
     def clear(self):
         for item in self:
             item.setVisited(False)
-    
+
     def search(self, value):
         self.clear()
         return Tree.dfs(self.root, value)
@@ -55,10 +56,10 @@ class Tree(object):
     def dfs(node, target) -> bool:
         if node == None:
             return False
-        
+
         if node.getVal() == target:
             return True
-        
+
         children = [node.left, node.right]
 
         for child in children:
@@ -67,12 +68,13 @@ class Tree(object):
                     child.setVisited(True)
                     child.setParent(node)
                     return Tree.dfs(child, target)
-        
+
         return Tree.dfs(node.getParent(), target)
 
     def __iter__(self):
         return iter(self.root)
-        
+
+
 if __name__ == "__main__":
     tree = Tree(10)
     tree.root.left = Tree._Node(5)
@@ -82,7 +84,7 @@ if __name__ == "__main__":
     tree.root.left.left = Tree._Node(12, left=Tree._Node(900), right=None)
     tree.root.left.right = Tree._Node(13, left=Tree._Node(123), right=Tree._Node(43))
 
-    print('**Inorder Traversal')
+    print("**Inorder Traversal")
     for node in tree:
         print(node)
     print("**Done Traversing.")
@@ -99,8 +101,3 @@ if __name__ == "__main__":
     assert not tree.search(11)
     assert not tree.search(27)
     print("**Passed all tests.")
-
-
-
-
-    

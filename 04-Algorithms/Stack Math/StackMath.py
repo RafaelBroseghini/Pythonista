@@ -5,6 +5,7 @@ Implementation of a Math Calculator for
 basic operations using a Stack Data Structure.
 """
 
+
 class Stack:
     def __init__(self):
         self.items = []
@@ -19,28 +20,30 @@ class Stack:
         return self.items.pop()
 
     def peek(self):
-        return self.items[len(self.items)-1]
+        return self.items[len(self.items) - 1]
 
     def size(self):
         return len(self.items)
 
-        
-def read_expressions():    
-    with open('rpnexpressions.txt', 'r') as exp:
+
+def read_expressions():
+    with open("rpnexpressions.txt", "r") as exp:
         expr_list = list()
         for line in exp.readlines():
-            line = line.strip('\n')
+            line = line.strip("\n")
             expr_list.append(line)
         return expr_list
 
+
 def evaluate_expr(expr: str) -> str:
     if len(expr.split()) % 2 != 0:
-        raise IndexError('Too few/many operands in the expression.')
+        raise IndexError("Too few/many operands in the expression.")
 
-    elif '=' not in expr:
-        raise IndexError('You need an equal sign in the expression.')
+    elif "=" not in expr:
+        raise IndexError("You need an equal sign in the expression.")
 
     return expr
+
 
 def rpn_calc(expression: str, s: Stack) -> int:
     for token in expression.split():
@@ -53,26 +56,29 @@ def rpn_calc(expression: str, s: Stack) -> int:
             op1 = s.pop()
             op2 = s.pop()
             s.push(op2 * op1)
-        elif token == '+':
+        elif token == "+":
             op1 = s.pop()
             op2 = s.pop()
             s.push(op2 + op1)
-        elif token == '-':
+        elif token == "-":
             op1 = s.pop()
             op2 = s.pop()
-            s.push(op2 - op1)  
-        elif token == '/':
+            s.push(op2 - op1)
+        elif token == "/":
             op1 = s.pop()
             op2 = s.pop()
-            s.push(op2 / op1)  
-        elif token == '=':
+            s.push(op2 / op1)
+        elif token == "=":
             result = s.pop()
             if s.isEmpty():
                 return int(result)
             else:
-                raise Warning("Stack is not empty even though there are even amount of tokens in it.")
+                raise Warning(
+                    "Stack is not empty even though there are even amount of tokens in it."
+                )
         else:
             s.push(int(token))
+
 
 def main():
     s = Stack()
@@ -80,5 +86,6 @@ def main():
     for expression in all_expr:
         print(expression, rpn_calc(evaluate_expr(expression), s))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

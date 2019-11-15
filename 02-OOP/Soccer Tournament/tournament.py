@@ -1,6 +1,8 @@
 import team, player, random
-class Tournament():
-    def __init__(self, teams=[[],[],[],[],[],[]], validator = {}, winner = None):
+
+
+class Tournament:
+    def __init__(self, teams=[[], [], [], [], [], []], validator={}, winner=None):
         self._winner = winner
         self._teams = teams
         self._validator = validator
@@ -12,7 +14,7 @@ class Tournament():
     @property
     def teams(self):
         return self._teams
-    
+
     @property
     def validator(self):
         return self._validator
@@ -29,7 +31,7 @@ class Tournament():
                 j += 1
                 i += 1
                 if i > 5:
-                    i = 0 
+                    i = 0
 
         return self.teams
 

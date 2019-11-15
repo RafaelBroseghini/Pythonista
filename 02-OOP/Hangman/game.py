@@ -66,9 +66,9 @@ class Hangman(object):
         diff = announcer.display_supported_difficulties()
         lang = announcer.ask_for_language()
 
-        self.read_from_file(announcer.difficulty[diff][1][0],
-                            announcer.difficulty[diff][1][1],
-                            lang)
+        self.read_from_file(
+            announcer.difficulty[diff][1][0], announcer.difficulty[diff][1][1], lang
+        )
 
         chosen_word = self.choose_word()
         hidden_word = self.hidden_word(chosen_word)

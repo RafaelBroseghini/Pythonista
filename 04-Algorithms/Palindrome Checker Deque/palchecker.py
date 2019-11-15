@@ -3,6 +3,7 @@ Program that checks if string is a palindrome
 using the Deque data structure.
 """
 
+
 class Deque:
     def __init__(self):
         self.items = []
@@ -14,7 +15,7 @@ class Deque:
         self.items.append(item)
 
     def addRear(self, item):
-        self.items.insert(0,item)
+        self.items.insert(0, item)
 
     def removeFront(self):
         return self.items.pop()
@@ -25,9 +26,10 @@ class Deque:
     def size(self):
         return len(self.items)
 
+
 def palchecker(aString: str) -> bool:
     chardeque = Deque()
-    new_String= aString.replace(' ','')
+    new_String = aString.replace(" ", "")
 
     for ch in new_String:
         chardeque.addRear(ch)
@@ -41,6 +43,7 @@ def palchecker(aString: str) -> bool:
             stillEqual = False
 
     return stillEqual
+
 
 print(palchecker("IPR EFE R     PI"))
 print(palchecker("r a       d ar    "))

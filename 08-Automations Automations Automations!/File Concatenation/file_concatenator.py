@@ -19,7 +19,7 @@ __status__ = "Prototype"
 
 class FileConcatenator(object):
     PATH = os.getcwd()
-    
+
     def __init__(self):
         """
         Initialize class member to a list with all
@@ -38,15 +38,17 @@ class FileConcatenator(object):
 
         result = []
         for idx, file in enumerate(self.file_list):
-            if re.search(extension+"$",file):
+            if re.search(extension + "$", file):
                 result.append(file)
-        
+
         if len(result) == 0:
             raise Exception("No {} files found.".format(extension))
 
         return result
 
-    def write_to_master_file(self, all_files=[], filename=sys.argv[2], separator=sys.argv[3]) -> None:
+    def write_to_master_file(
+        self, all_files=[], filename=sys.argv[2], separator=sys.argv[3]
+    ) -> None:
         """
         Writes content of all found files with extension
         to a single source name passed as command line argument
@@ -72,8 +74,9 @@ class FileConcatenator(object):
 
 def main():
     a = FileConcatenator()
-    all_found_files = a.get_files_with_extension() 
+    all_found_files = a.get_files_with_extension()
     a.write_to_master_file(all_found_files)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

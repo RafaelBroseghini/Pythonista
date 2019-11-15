@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
 
+
 class Animal(ABC):
-    '''Default animal'''
+    """Default animal"""
+
     @abstractmethod
     def __init__(self, spec_, age_, color_):
         self._spec = spec_
@@ -10,34 +12,36 @@ class Animal(ABC):
 
     @abstractmethod
     def sound(self):
-        '''Make noise'''
+        """Make noise"""
         pass
 
     def __str__(self):
-        '''Convert to string'''
+        """Convert to string"""
         return "{} {} ({} yo)".format(self._color, self._spec, self._age)
 
 
 class Bird(Animal):
-    '''Bird class'''
+    """Bird class"""
+
     @abstractmethod
     def __init__(self, spec_, age_, color_, flying_):
         # Task 1a: call the constructor of the superclass
         super().__init__(spec_, age_, color_)
         # Task 1b: initialize private property _flying
         self._flying = flying_
-    
+
     def __str__(self):
         # Task 1c: if a bird is flying, return "Flying" + super().__str__()
         if self._flying == True:
             return "Flying " + super().__str__()
         # Task 1d: if a bird if not a flying one, return "Non-flying " + super().__str__()
         else:
-            return "Non-Flying " +  super().__str__()
+            return "Non-Flying " + super().__str__()
 
 
 class Mammal(Animal):
-    '''Mammal class'''
+    """Mammal class"""
+
     @abstractmethod
     def __init__(self, spec_, age_, color_, habitat_):
         # Task 2a: call the constructor of the superclass
@@ -47,18 +51,18 @@ class Mammal(Animal):
             self._habitat = habitat_
         # Task 2c: raise a ValueError is the habitat_ value is invalid
         else:
-            raise ValueError('invalid habitat') 
-
+            raise ValueError("invalid habitat")
 
 
 class Parrot(Bird):
-    '''Parrot class'''
+    """Parrot class"""
+
     def __init__(self, age_, color_, talking_):
         # Task 3a: call the constructor of the superclass with "Parrot" as species and flying set to True
         super().__init__("Parrot", age_, color_, True)
         # Task 3b: initialize private property _talking to talking_
         self._talking = talking_
-        
+
     def sound(self):
         # Task 3c: if a parrot is talking, return "'Polly wants a cracker'"
         if self._talking == True:
@@ -67,8 +71,10 @@ class Parrot(Bird):
         elif self._talking == False:
             return "nothing"
 
+
 class Penguin(Bird):
-    '''Penguin class'''
+    """Penguin class"""
+
     def __init__(self, age_, color_):
         super().__init__("Penguin", age_, color_, False)
 
@@ -77,14 +83,16 @@ class Penguin(Bird):
 
 
 class Canine(Mammal):
-    '''Canine class'''
+    """Canine class"""
+
     @abstractmethod
     def __init__(self, spec_, age_, color_, habitat_):
         super().__init__(spec_, age_, color_, habitat_)
 
 
 class Feline(Mammal):
-    '''Feline class'''
+    """Feline class"""
+
     @abstractmethod
     def __init__(self, spec_, age_, color_, habitat_):
         super().__init__(spec_, age_, color_, habitat_)
@@ -94,11 +102,11 @@ class Feline(Mammal):
 
 
 class Dog(Canine):
-    '''Dog class'''
+    """Dog class"""
+
     def __init__(self, age_, color_):
         # Task 4a: call the constructor of the superclass with "Dog" as species and habitat set to "Land"
         super().__init__("Dog", age_, color_, "Land")
-
 
     def sound(self):
         return "Woof!"
@@ -106,17 +114,29 @@ class Dog(Canine):
 
 
 class HouseCat(Feline):
-    '''HouseCat class'''
+    """HouseCat class"""
+
     def __init__(self, age_, color_):
         super().__init__("House Cat", age_, color_, "Land")
 
 
 class BobCat(Feline):
-    '''BobCat class'''
+    """BobCat class"""
+
     def __init__(self, age_, color_, habitat_):
         # Task 5a: call the constructor of the superclass with "Bobcat" as species
         super().__init__("Bobcat", age_, color_, habitat_)
-        
+
     def __str__(self):
-        return str(self._color) + " " + str(self._habitat) + " " + str(self._spec) + " " + '(' + str(self._age) + ' yo)'
+        return (
+            str(self._color)
+            + " "
+            + str(self._habitat)
+            + " "
+            + str(self._spec)
+            + " "
+            + "("
+            + str(self._age)
+            + " yo)"
+        )
         # Task 5b: return string must include color, habitat, species, and age
