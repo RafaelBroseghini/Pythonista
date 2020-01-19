@@ -59,7 +59,7 @@ def traverse(graph: dict, dest: str, source: str) -> list:
 
         if dest == source:
             return path
-    return "Oops, no Kevin Bacon number for {}".format(dest)
+    return []
 
 
 GRAPH = build_graph("movies.txt")
