@@ -63,8 +63,7 @@ class TuringMachine:
 class Tape:
     def __init__(self, inputRead=""):
         self.contents = (
-            [" " for item in range(50)] + list(inputRead) +
-            [" " for item in range(50)]
+            [" " for item in range(50)] + list(inputRead) + [" " for item in range(50)]
         )
         self.tapeReadPos = 50
 
@@ -83,8 +82,7 @@ class Tape:
     def move_left(self) -> None:
         self.tapeReadPos -= 1
         if self.tapeReadPos == -1:
-            self.contents = [" " for item in range(
-                len(self.contents))] + self.contents
+            self.contents = [" " for item in range(len(self.contents))] + self.contents
             self.tapeReadPos = len(self.contents) // 2 - 1
 
     # Not move. Only accessed when reaches a final state.

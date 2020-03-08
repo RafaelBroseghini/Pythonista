@@ -20,8 +20,7 @@ def parse_lines(lines: list) -> list:
             # print(new_line)
             format_match = re.search(r"\.format\((.*)\)$", new_line)
             if format_match:
-                vals = [
-                    "{" + x + "}" for x in format_match.groups(0)[0].split(",")]
+                vals = ["{" + x + "}" for x in format_match.groups(0)[0].split(",")]
                 print(re.sub("{}", vals, lines[i]))
                 # re.
 
