@@ -31,24 +31,24 @@ def all_empty_hands(players):
     total = len(players)
 
     for p in players:
-        if len(p.get_hand()) == 0:
+        if not p.get_hand():
             total -= 1
 
     return total == 0
 
 
 def deal_cards(deck, players):
-    for turn in range(4):
+    for _ in range(4):
         for player in players:
             player.draw(deck)
 
 
-def get_winner(game):
+def get_winner(table):
     winner_name = ""
     winner_score = 0
-    for player in game:
-        if game[player] > winner_score:
-            winner_score = game[player]
+    for player in table:
+        if table[player] > winner_score:
+            winner_score = table[player]
             winner_name = player
 
     return winner_name
@@ -63,11 +63,11 @@ def game(deck, num_players=int(input("Number of players: "))):
     while True:
         round_winner_card = players[0].get_hand()[-1]
         round_winner_player = players[0]
-        for player in range(len(players)):
-            choice = players[player].play_card()
+        for i, player in enumerate(players):
+            choice = players[i].play_card()
             if choice > round_winner_card:
                 round_winner_card = choice
-                round_winner_player = players[player]
+                round_winner_player = players[i]
         score[str(round_winner_player)] += 1
         # compute winner for that round.
 

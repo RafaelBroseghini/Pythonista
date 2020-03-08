@@ -10,9 +10,9 @@ put every team into a dictionary keeping
 a count for repeated matches.
 """
 
-import requests
 from collections import Counter
 from bs4 import BeautifulSoup
+import requests
 
 
 URL = "https://www.luther.edu/sports/men/soccer/schedule/"

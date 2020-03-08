@@ -24,7 +24,7 @@ class OrderedList:
         current = self._head
         found = False
         stop = False
-        while current != None and not found and not stop:
+        while current is not None and not found and not stop:
             if current.getData() == item:
                 found = True
             else:
@@ -39,7 +39,7 @@ class OrderedList:
         current = self._head
         previous = None
         stop = False
-        while current != None and not stop:
+        while current is not None and not stop:
             if current.getData() > item:
                 stop = True
             else:
@@ -59,7 +59,7 @@ class OrderedList:
         previous = None
         found = False
         stop = False
-        while not found and not stop:
+        while current is not None and not found and not stop:
             if current.getData() == item:
                 found = True
             elif current.getData() > item:
@@ -67,25 +67,31 @@ class OrderedList:
             else:
                 previous = current
                 current = current.getNext()
-        if previous == None:
+                print(current.getData())
+        if previous is None:
             self._head = current.getNext()
         else:
             previous.setNext(current.getNext())
 
+        if current is None:
+            print("Index out of range")
+
     def getItem(self, index):
         current = self._head
-        for i in range(index):
+        for _ in range(index):
+            if current is None:
+                raise IndexError("Index out of range")
             current = current.getNext()
-        if current != None:
+        if current is not None:
             return current.getData()
         else:
-            raise ("Index out of range.")
+            raise IndexError
 
     def index(self, item):
         index = 0
         current = self._head
         found = False
-        while current != None:
+        while current is not None:
             if current.getData() == item:
                 found = True
                 break
@@ -107,7 +113,7 @@ class OrderedList:
             else:
                 index = self.size() - 1
                 self.remove(self.getItem(index))
-        except Exception as ie:
+        except IndexError:
             print("Index out of range for pop method.")
 
     def isEmpty(self):
@@ -116,7 +122,7 @@ class OrderedList:
     def size(self):
         current = self._head
         count = 0
-        while current != None:
+        while current is not None:
             count = count + 1
             current = current.getNext()
         return count
@@ -126,7 +132,7 @@ class OrderedList:
         for i in range(index):
             current = current.getNext()
 
-        if current != None:
+        if current is not None:
             temp = Node(item)
             temp.setNext(current.getNext())
             current.setNext(temp)
@@ -151,24 +157,23 @@ class OrderedList:
         return str(all_nodes)
 
 
-mylist = OrderedList()
-mylist.add(31)
-mylist.add(77)
-mylist.add(17)
-mylist.add(93)
-mylist.add(26)
-mylist.add(54)
-try:
-    mylist.pop(9)
-except Exception as ie:
-    print(ie)
-mylist.insert(0, 2)
-print(mylist)
-print(mylist.index(17))
-n = Node(5)
-mylist.append(n)
-print(mylist)
+def main():
+    lst = OrderedList()
+    vals = [31, 2, 5, 1, 235, 5, 23, 4, 5, 5, 234, 3, 42, 34, 5, 66]
+    for val in vals:
+        lst.add(val)
+    lst.pop(9)
+    lst.insert(0, 2)
+    print(lst)
+    print(lst.index(17))
+    n = Node(5)
+    lst.append(n)
+    print(lst)
 
-print(mylist.size())
-print(mylist.search(93))
-print(mylist.search(100))
+    print(lst.size())
+    print(lst.search(93))
+    print(lst.search(100))
+
+
+if __name__ == "__main__":
+    main()

@@ -52,7 +52,7 @@ def reverse(s1):
     while not s1.isEmpty():
         temp.insert(0, s1.pop())
 
-    while not len(temp) == 0:
+    while len(temp) != 0:
         s1.push(temp.pop())
 
 

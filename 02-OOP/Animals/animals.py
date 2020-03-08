@@ -32,7 +32,7 @@ class Bird(Animal):
 
     def __str__(self):
         # Task 1c: if a bird is flying, return "Flying" + super().__str__()
-        if self._flying == True:
+        if self._flying:
             return "Flying " + super().__str__()
         # Task 1d: if a bird if not a flying one, return "Non-flying " + super().__str__()
         else:
@@ -65,11 +65,10 @@ class Parrot(Bird):
 
     def sound(self):
         # Task 3c: if a parrot is talking, return "'Polly wants a cracker'"
-        if self._talking == True:
+        if self._talking:
             return "'Polly wants a cracker' "
         # Task 3d: if a parrot is talking, return "nothing" (word)
-        elif self._talking == False:
-            return "nothing"
+        return "nothing"
 
 
 class Penguin(Bird):

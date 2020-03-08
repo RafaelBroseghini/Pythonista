@@ -20,7 +20,7 @@ class Cup:
     def roll(self, *args):
         """Roll the dice"""
         for i in args:
-            if i > 0 and i <= len(args):
+            if 0 < i <= len(args):
                 self._dice[i - 1].roll()
 
     def total(self):

@@ -9,6 +9,7 @@ Date: 03/01/16
 Filename: broseghiniRWkst02.py
 """
 
+import random  # Import the random module.
 import math  # Import math module.
 
 print("1. ", round(62.583, 2))
@@ -23,7 +24,6 @@ print("9a.", math.trunc(145.975))
 print("9b.", int(145.975))
 print()
 print("10.")
-import random  # Import the random module.
 
 for i in range(
     5

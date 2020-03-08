@@ -28,11 +28,11 @@ class Tree(object):
             self.parent = newParent
 
         def inorder(self):
-            if self.left != None:
+            if self.left is not None:
                 for item in self.left.inorder():
                     yield item
             yield self
-            if self.right != None:
+            if self.right is not None:
                 for item in self.right.inorder():
                     yield item
 
@@ -54,7 +54,7 @@ class Tree(object):
         return Tree.dfs(self.root, value)
 
     def dfs(node, target) -> bool:
-        if node == None:
+        if node is None:
             return False
 
         if node.getVal() == target:
@@ -63,7 +63,7 @@ class Tree(object):
         children = [node.left, node.right]
 
         for child in children:
-            if child != None:
+            if child is not None:
                 if not child.hasBeenVisited():
                     child.setVisited(True)
                     child.setParent(node)
@@ -79,10 +79,12 @@ if __name__ == "__main__":
     tree = Tree(10)
     tree.root.left = Tree._Node(5)
     tree.root.right = Tree._Node(28)
-    tree.root.right.left = Tree._Node(66, left=Tree._Node(99), right=Tree._Node(100))
+    tree.root.right.left = Tree._Node(
+        66, left=Tree._Node(99), right=Tree._Node(100))
     tree.root.right.right = Tree._Node(8, left=Tree._Node(65), right=None)
     tree.root.left.left = Tree._Node(12, left=Tree._Node(900), right=None)
-    tree.root.left.right = Tree._Node(13, left=Tree._Node(123), right=Tree._Node(43))
+    tree.root.left.right = Tree._Node(
+        13, left=Tree._Node(123), right=Tree._Node(43))
 
     print("**Inorder Traversal")
     for node in tree:

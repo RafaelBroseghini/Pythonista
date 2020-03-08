@@ -26,6 +26,7 @@ class Trie(object):
         item += "$"
         self.start = Trie.__insert(self.start, item)
 
+    @staticmethod
     def __contains__(self, item):
         item += "$"
         return Trie.__contains(self.start, item)
@@ -45,6 +46,7 @@ class Trie(object):
 
         return node
 
+    @staticmethod
     def __contains(node, item):
         if len(item) == 0:
             return True
@@ -54,8 +56,8 @@ class Trie(object):
 
         if node.item == item[0]:
             return Trie.__contains(node.follows, item[1:])
-        else:
-            return Trie.__contains(node.next, item)
+
+        return Trie.__contains(node.next, item)
 
     def suggest(self, item):
         if item in self:
