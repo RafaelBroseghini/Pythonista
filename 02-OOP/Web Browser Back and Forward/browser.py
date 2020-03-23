@@ -9,7 +9,6 @@ __author__ = "Rafael Broseghini"
 __credits__ = ["Rafael Broseghini"]
 __version__ = "1.0.1"
 __maintainer__ = "Rafael Broseghini"
-__email__ = "rafaellopesbroseghini@gmail.com"
 __status__ = "Prototype"
 
 
