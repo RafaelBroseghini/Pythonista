@@ -1,6 +1,7 @@
 import os
 import string
 
+
 class Announcer:
     def __init__(self, difficulty=None, tries=10):
         if difficulty is None:
@@ -37,15 +38,20 @@ class Announcer:
         return inp
 
     def ask_for_language(self):
-        langs = [file for file in os.listdir("./") if file.endswith(".txt")]
+        langs = [file for file in os.listdir("./langs") if file.endswith(".txt")]
+        nosuffix = [item.rstrip(".txt") for item in langs]
         print("\nChoose a language:")
         for idx, lang in enumerate(langs, start=1):
             print(f"{idx}) {lang:<15}")
-        inp = input("\nLanguage: ")
-        while inp not in langs:
+        while True:
+            inp = input("\nNumber/Language: ")
+            if inp.isdigit():
+                num = int(inp)
+                if num > 0 and num <= len(langs):
+                    return langs[num - 1]
+            elif inp in langs or inp in nosuffix:
+                return inp
             print(f"{inp} is not supported in this game. Try again!")
-            inp = input("Try Again. Language: ")
-        return inp
 
     def display_dashed_word(self):
         print("-" * 30)
@@ -69,4 +75,3 @@ class Announcer:
         print("-" * 30)
         print("\033[1;31;4;5mGAME OVER!\033[0m\n")
         print(f"The word was '{chosen_word}'.")
-
